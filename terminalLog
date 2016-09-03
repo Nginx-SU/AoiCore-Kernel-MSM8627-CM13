@@ -1,0 +1,70 @@
+nicklas@nicklas-core:~/android/kernel$ ./AoiCore+.sh
+
+######################################################
+#                                                    #
+#           AoiCore+ Kernel Script Builder           #
+#                                                    #
+#                Nicklas Van Dam @XDA                #
+#                                                    #
+######################################################
+
+###Extracting AoiCore+ EXT
+
+###Running GCC Toolchains 5.2.0 (ArchiToolchains)
+
+###Building zImage
+
+###Compiler process is written on compileLog for simple interfaces
+  HOSTCC  scripts/basic/fixdep
+  HOSTCC  scripts/kconfig/conf.o
+  SHIPPED scripts/kconfig/zconf.tab.c
+  SHIPPED scripts/kconfig/zconf.lex.c
+  SHIPPED scripts/kconfig/zconf.hash.c
+  HOSTCC  scripts/kconfig/zconf.tab.o
+  HOSTLD  scripts/kconfig/conf
+#
+# configuration written to .config
+#
+
+##Creating Modules kernel
+cp: ‘./modules/ks8851.ko’ and ‘modules/ks8851.ko’ are the same file
+cp: ‘./modules/qce40.ko’ and ‘modules/qce40.ko’ are the same file
+cp: ‘./modules/eeprom_93cx6.ko’ and ‘modules/eeprom_93cx6.ko’ are the same file
+cp: ‘./modules/ansi_cprng.ko’ and ‘modules/ansi_cprng.ko’ are the same file
+cp: ‘./modules/gspca_main.ko’ and ‘modules/gspca_main.ko’ are the same file
+cp: ‘./modules/reset_modem.ko’ and ‘modules/reset_modem.ko’ are the same file
+cp: ‘./modules/wlan.ko’ and ‘modules/wlan.ko’ are the same file
+cp: ‘./modules/spidev.ko’ and ‘modules/spidev.ko’ are the same file
+cp: ‘./modules/scsi_wait_scan.ko’ and ‘modules/scsi_wait_scan.ko’ are the same file
+cp: ‘./modules/qcrypto.ko’ and ‘modules/qcrypto.ko’ are the same file
+cp: ‘./modules/adsprpc.ko’ and ‘modules/adsprpc.ko’ are the same file
+cp: ‘./modules/mcdrvmodule.ko’ and ‘modules/mcdrvmodule.ko’ are the same file
+cp: ‘./modules/qcedev.ko’ and ‘modules/qcedev.ko’ are the same file
+cp: ‘./modules/mckernelapi.ko’ and ‘modules/mckernelapi.ko’ are the same file
+
+## Extracting AoiCore+
+mkdir: cannot create directory ‘AoiCore+_ouput’: File exists
+##Cleaning Build
+  CLEAN   .
+  CLEAN   arch/arm/kernel
+  CLEAN   kernel
+  CLEAN   lib
+  CLEAN   security/selinux
+  CLEAN   usr
+  CLEAN   arch/arm/boot/compressed
+  CLEAN   arch/arm/boot
+  CLEAN   .tmp_versions
+  CLEAN   vmlinux System.map .tmp_kallsyms2.S .tmp_kallsyms1.o .tmp_kallsyms2.o .tmp_kallsyms1.S .tmp_vmlinux1 .tmp_vmlinux2 .tmp_System.map
+  CLEAN   scripts/basic
+  CLEAN   scripts/genksyms
+  CLEAN   scripts/kconfig
+  CLEAN   scripts/mod
+  CLEAN   scripts/selinux/genheaders
+  CLEAN   scripts/selinux/mdp
+  CLEAN   scripts
+  CLEAN   include/config include/generated arch/arm/include/generated
+  CLEAN   .config .version include/linux/version.h Module.symvers
+##Done
+Script Complete Successfuly
+Nicklas Van Dam @ XDA
+
