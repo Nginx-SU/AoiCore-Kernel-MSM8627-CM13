@@ -14,6 +14,8 @@ echo "
 cd /home/nicklas
 rm android/kernel/Makefile
 cp AoiCore+_EXT/Makefile android/kernel/Makefile
+rm android/kernel/arch/arm/Kconfig
+cp AoiCore+_EXT/arch/arm/Kconfig android/kernel/arch/arm/Kconfig
 rm android/kernel/arch/arm/Makefile
 cp AoiCore+_EXT/arch/arm/Makefile android/kernel/arch/arm/Makefile
 rm android/kernel/arch/arm/configs/cyanogenmod_nicki_defconfig
@@ -68,6 +70,15 @@ cd android/kernel
 echo "
 ###Running GCC Toolchains 5.2.0 (ArchiToolchains)"
 
+export CT_ARCH_ARCH=""
+export CT_ARCH_CPU="cortex-a7"
+export CT_ARCH_TUNE="cortex-a7"
+export CT_ARCH_FPU="neon-vfpv4"
+export CT_ARCH_FLOAT_HW=y
+export CT_ARCH_FLOAT="hard"
+export CT_ARCH_SUPPORT_SOFTFP=y
+export CT_ARCH_ARM_MODE="arm"
+export CT_ARCH_ARM_MODE_ARM=y
 export ARCH=arm
 export CROSS_COMPILE=/home/nicklas/toolchainsarchi/bin/arm-architoolchain-linux-gnueabihf-
 
