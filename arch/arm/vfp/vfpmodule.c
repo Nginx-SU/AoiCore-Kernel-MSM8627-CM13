@@ -822,11 +822,8 @@ static int __init vfp_init(void)
 	return 0;
 }
 
-/*
- * VFP late initialisation.
- */
-static int __init vfp_late_init(void)
-{
+static int __init vfp_rootfs_init(void)
+ {
 #ifdef CONFIG_PROC_FS
 	static struct proc_dir_entry *procfs_entry;
 
@@ -842,4 +839,4 @@ static int __init vfp_late_init(void)
 }
 
 core_initcall(vfp_init);
-late_initcall(vfp_late_init);
+rootfs_initcall(vfp_rootfs_init);
