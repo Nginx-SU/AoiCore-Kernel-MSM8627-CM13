@@ -824,7 +824,11 @@ static int __init vfp_init(void)
 
 static int __init vfp_rootfs_init(void)
  {
+<<<<<<< HEAD
   #ifdef CONFIG_PROC_FS
+=======
+#ifdef CONFIG_PROC_FS
+>>>>>>> 49200da0b357043c0bd47133e4598f6ab359b301
 	static struct proc_dir_entry *procfs_entry;
 
 	pr_debug("Create procfs node for VFP bounce reporting\n");
