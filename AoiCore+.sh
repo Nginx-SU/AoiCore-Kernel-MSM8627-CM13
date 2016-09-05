@@ -8,6 +8,10 @@ echo "
 #                                                    #
 ######################################################"
 
+echo "###cleaning old build"
+
+make clean && make mrproper
+
 echo "
 ###Extracting AoiCore+ EXT"
 
@@ -109,9 +113,25 @@ echo "##Cleaning Build"
 cd android/kernel
 make clean && make mrproper
 
+echo "## Creating boot.img"
+cd /home/nicklas/AoiCore+_EXT/AIK-Linux
+./unpackimg.sh
+cd /home/nicklas/AoiCore+_output
+rm /home/nicklas/AoiCore+_EXT/AIK-Linux/split_img/boot.img-zImage
+cp zImage /home/nicklas/AoiCore+_EXT/AIK-Linux/split_img/boot.img-zImage
+cd /home/nicklas/AoiCore+_EXT/AIK-Linux
+./repackimg.sh
+cd /home/nicklas/AoiCore+_EXT/AIK-Linux/
+mv image-new.img /home/nicklas/AoiCore+_output/boot.img
+
+echo "##Cleaning old boot.img"
+cd /home/nicklas/AoiCore+_EXT/AIK-Linux
+./cleanup.sh
+
 echo "##Done"
 
 ##Script Done
 
 echo "Script Complete Successfuly"
 echo "Nicklas Van Dam @ XDA"
+
