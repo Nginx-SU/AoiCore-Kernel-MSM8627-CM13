@@ -1,6 +1,0 @@
-# Execute files in /etc/init.d during boot
-service userinit /system/bin/toybox run-parts /system/etc/init.d
-    oneshot
-    class late_start
-    user root
-    group root'

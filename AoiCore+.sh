@@ -26,6 +26,9 @@ rm android/kernel/arch/arm/configs/cyanogenmod_nicki_defconfig
 cp AoiCore+_EXT/arch/arm/configs/cyanogenmod_nicki_defconfig android/kernel/arch/arm/configs/cyanogenmod_nicki_defconfig
 rm android/kernel/arch/arm/include/asm/xor.h
 cp AoiCore+_EXT/arch/arm/include/asm/xor.h android/kernel/arch/arm/include/asm/xor.h
+rm android/kernel/arch/arm/kernel/Makefile
+cp AoiCore+_EXT/arch/arm/kernel/Makefile android/kernel/arch/arm/kernel/Makefile
+cp AoiCore+_EXT/arch/arm/kernel/auto_hotplug.c android/kernel/arch/arm/kernel/auto_hotplug.c
 rm android/kernel/arch/arm/lib/Makefile 
 cp AoiCore+_EXT/arch/arm/lib/Makefile android/kernel/arch/arm/lib/Makefile
 cp AoiCore+_EXT/arch/arm/lib/xor-neon.c android/kernel/arch/arm/lib/xor-neon.c
@@ -69,6 +72,8 @@ cp AoiCore+_EXT/include/linux/compiler-gcc5.h android/kernel/include/linux/compi
 rm android/kernel/include/linux/cpufreq.h
 cp AoiCore+_EXT/include/linux/cpufreq.h android/kernel/include/linux/cpufreq.h
 cp AoiCore+_EXT/include/linux/fastchg.h android/kernel/include/linux/fastchg.h
+rm android/kernel/kernel/sched/features.h
+cp AoiCore+_EXT/kernel/sched/features.h android/kernel/kernel/sched/features.h
 cd android/kernel
 
 echo "
@@ -122,7 +127,7 @@ cp zImage /home/nicklas/AoiCore+_EXT/AIK-Linux/split_img/boot.img-zImage
 cd /home/nicklas/AoiCore+_EXT/AIK-Linux
 ./repackimg.sh
 cd /home/nicklas/AoiCore+_EXT/AIK-Linux/
-mv image-new.img /home/nicklas/AoiCore+_output/boot.img
+mv image-new.img /home/nicklas/boot.img
 
 echo "##Cleaning old boot.img"
 cd /home/nicklas/AoiCore+_EXT/AIK-Linux
@@ -130,6 +135,10 @@ cd /home/nicklas/AoiCore+_EXT/AIK-Linux
 
 echo "##Done"
 
+echo "##Creating AoiCore+.zip"
+rm /home/nicklas/AoiCore+_output/zImage
+cd /home/nicklas/AoiCore+_EXT
+./AoiCore+_Builder.sh
 ##Script Done
 
 echo "Script Complete Successfuly"

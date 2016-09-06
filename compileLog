@@ -82,6 +82,7 @@ scripts/kconfig/conf --silentoldconfig Kconfig
   CC      arch/arm/kernel/sys_arm.o
   CC      arch/arm/kernel/time.o
   CC      arch/arm/kernel/traps.o
+  CC      arch/arm/kernel/auto_hotplug.o
   CC      arch/arm/kernel/cpuidle.o
   CC      arch/arm/kernel/armksyms.o
   CC      arch/arm/kernel/module.o
