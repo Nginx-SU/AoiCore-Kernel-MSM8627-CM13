@@ -66,6 +66,8 @@ cp AoiCore+_EXT/drivers/cpufreq/cpufreq_lionheart.c android/kernel/drivers/cpufr
 cp AoiCore+_EXT/drivers/cpufreq/cpufreq_lulzactive.c android/kernel/drivers/cpufreq/cpufreq_lulzactive.c
 cp AoiCore+_EXT/drivers/cpufreq/cpufreq_smartass2.c android/kernel/drivers/cpufreq/cpufreq_smartass2.c
 cp AoiCore+_EXT/drivers/cpufreq/cpufreq_savagedzen.c android/kernel/drivers/cpufreq/cpufreq_savagedzen.c
+rm android/kernel/drivers/thermal/Kconfig
+cp AoiCore+_EXT/drivers/thermal/Kconfig android/kernel/drivers/thermal/Kconfig
 rm android/kernel/drivers/usb/otg/msm_otg.c
 cp AoiCore+_EXT/drivers/usb/otg/msm_otg.c android/kernel/drivers/usb/otg/msm_otg.c
 cp AoiCore+_EXT/include/linux/compiler-gcc5.h android/kernel/include/linux/compiler-gcc5.h
@@ -77,7 +79,7 @@ cp AoiCore+_EXT/kernel/sched/features.h android/kernel/kernel/sched/features.h
 cd android/kernel
 
 echo "
-###Running GCC Toolchains 5.2.0 (ArchiToolchains)"
+###Running GCC Toolchains 5.3.0 (UBERTC Toolchains)"
 
 export CT_ARCH_ARCH=""
 export CT_ARCH_CPU="cortex-a7"
@@ -89,7 +91,7 @@ export CT_ARCH_SUPPORT_SOFTFP=y
 export CT_ARCH_ARM_MODE="arm"
 export CT_ARCH_ARM_MODE_ARM=y
 export ARCH=arm
-export CROSS_COMPILE=/home/nicklas/toolchainsarchi/bin/arm-architoolchain-linux-gnueabihf-
+export CROSS_COMPILE=/home/nicklas/UBERTC-5.3/bin/arm-linux-androideabi-
 
 echo "
 ###Building zImage"
@@ -98,7 +100,7 @@ echo "
 ###Compiler process is written on compileLog for simple interfaces"
 
 make ARCH=arm cyanogenmod_nicki_defconfig
-make ARCH=arm CROSS_COMPILE=/home/nicklas/toolchainsarchi/bin/arm-architoolchain-linux-gnueabihf- > compileLog
+make ARCH=arm CROSS_COMPILE=/home/nicklas/UBERTC-5.3/bin/arm-linux-androideabi- > compileLog
 
 echo "
 ##Creating Modules kernel"
@@ -118,16 +120,15 @@ echo "##Cleaning Build"
 cd android/kernel
 make clean && make mrproper
 
-echo "## Creating boot.img"
+cho "## Creating boot.img"
 cd /home/nicklas/AoiCore+_EXT/AIK-Linux
 ./unpackimg.sh
+rm split_img/boot.img-zImage
 cd /home/nicklas/AoiCore+_output
-rm /home/nicklas/AoiCore+_EXT/AIK-Linux/split_img/boot.img-zImage
 cp zImage /home/nicklas/AoiCore+_EXT/AIK-Linux/split_img/boot.img-zImage
 cd /home/nicklas/AoiCore+_EXT/AIK-Linux
 ./repackimg.sh
-cd /home/nicklas/AoiCore+_EXT/AIK-Linux/
-mv image-new.img /home/nicklas/boot.img
+mv image-new.img /home/nicklas/AoiCore+_EXT/boot.img
 
 echo "##Cleaning old boot.img"
 cd /home/nicklas/AoiCore+_EXT/AIK-Linux
