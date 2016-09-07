@@ -120,7 +120,7 @@ echo "##Cleaning Build"
 cd android/kernel
 make clean && make mrproper
 
-cho "## Creating boot.img"
+echo "##Creating boot.img"
 cd /home/nicklas/AoiCore+_EXT/AIK-Linux
 ./unpackimg.sh
 rm split_img/boot.img-zImage
