@@ -97,7 +97,7 @@ export CT_ARCH_SUPPORT_SOFTFP=y
 export CT_ARCH_ARM_MODE="arm"
 export CT_ARCH_ARM_MODE_ARM=y
 export ARCH=arm
-export CROSS_COMPILE=/home/nicklas/UBERTC-5.3.0/bin/arm-linux-androideabi- mtune=cortex-a7 -mfpu=neon-vfpv4
+export CROSS_COMPILE=/home/nicklas/UBERTC-5.3.0/bin/arm-linux-androideabi-
 
 echo "
 ###Building zImage"
@@ -106,7 +106,7 @@ echo "
 ###Compiler process is written on compileLog for simple interfaces"
 
 make ARCH=arm cyanogenmod_nicki_defconfig
-make ARCH=arm CROSS_COMPILE=/home/nicklas/UBERTC-5.3.0/bin/arm-linux-androideabi- mtune=cortex-a7 -mfpu=neon-vfpv4- > compileLog
+make ARCH=arm CROSS_COMPILE=/home/nicklas/UBERTC-5.3.0/bin/arm-linux-androideabi- > compileLog
 
 echo "
 ##Creating Modules kernel"
@@ -149,4 +149,3 @@ cd /home/nicklas/AoiCore+_EXT
 
 echo "Script Complete Successfuly"
 echo "Nicklas Van Dam @ XDA"
-
