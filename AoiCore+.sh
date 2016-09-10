@@ -22,6 +22,8 @@ rm android/kernel/arch/arm/Kconfig
 cp AoiCore+_EXT/arch/arm/Kconfig android/kernel/arch/arm/Kconfig
 rm android/kernel/arch/arm/Makefile
 cp AoiCore+_EXT/arch/arm/Makefile android/kernel/arch/arm/Makefile
+rm android/kernel/arch/arm/boot/compressed/Makefile
+cp AoiCore+_EXT/arch/arm/boot/compressed/Makefile android/kernel/arch/arm/boot/compressed/Makefile
 rm android/kernel/arch/arm/configs/cyanogenmod_nicki_defconfig
 cp AoiCore+_EXT/arch/arm/configs/cyanogenmod_nicki_defconfig android/kernel/arch/arm/configs/cyanogenmod_nicki_defconfig
 rm android/kernel/arch/arm/include/asm/xor.h
