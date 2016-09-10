@@ -26,7 +26,6 @@ rm android/kernel/arch/arm/configs/cyanogenmod_nicki_defconfig
 cp AoiCore+_EXT/arch/arm/configs/cyanogenmod_nicki_defconfig android/kernel/arch/arm/configs/cyanogenmod_nicki_defconfig
 rm android/kernel/arch/arm/include/asm/xor.h
 cp AoiCore+_EXT/arch/arm/include/asm/xor.h android/kernel/arch/arm/include/asm/xor.h
-rm android/kernel/arch/arm/include/asm/rwsem.h
 cp AoiCore+_EXT/arch/arm/include/asm/rwsem.h android/kernel/arch/arm/include/asm/rwsem.h
 rm android/kernel/arch/arm/kernel/Makefile
 cp AoiCore+_EXT/arch/arm/kernel/Makefile android/kernel/arch/arm/kernel/Makefile
@@ -76,6 +75,10 @@ rm android/kernel/drivers/thermal/Kconfig
 cp AoiCore+_EXT/drivers/thermal/Kconfig android/kernel/drivers/thermal/Kconfig
 rm android/kernel/drivers/usb/otg/msm_otg.c
 cp AoiCore+_EXT/drivers/usb/otg/msm_otg.c android/kernel/drivers/usb/otg/msm_otg.c
+rm android/kernel/fs/compat_ioctl.c
+cp AoiCore+_EXT/fs/compat_ioctl.c android/kernel/fs/compat_ioctl.c
+rm android/kernel/include/asm-generic/ioctls.h
+cp AoiCore+_EXT/include/asm-generic/ioctls.h android/kernel/include/asm-generic/ioctls.h
 cp AoiCore+_EXT/include/linux/compiler-gcc5.h android/kernel/include/linux/compiler-gcc5.h
 rm android/kernel/include/linux/cpufreq.h
 cp AoiCore+_EXT/include/linux/cpufreq.h android/kernel/include/linux/cpufreq.h
@@ -85,19 +88,10 @@ cp AoiCore+_EXT/kernel/sched/features.h android/kernel/kernel/sched/features.h
 cd android/kernel
 
 echo "
-###Running GCC Toolchains 5.3.1 (UBERTC Toolchains)"
+###Running GCC Toolchains 5.3.0 (Crosstool-NG Toolchains)"
 
-export CT_ARCH_ARCH=""
-export CT_ARCH_CPU="cortex-a7"
-export CT_ARCH_TUNE="cortex-a7"
-export CT_ARCH_FPU="neon-vfpv4"
-export CT_ARCH_FLOAT_HW=y
-export CT_ARCH_FLOAT="hard"
-export CT_ARCH_SUPPORT_SOFTFP=y
-export CT_ARCH_ARM_MODE="arm"
-export CT_ARCH_ARM_MODE_ARM=y
 export ARCH=arm
-export CROSS_COMPILE=/home/nicklas/UBERTC-5.3.0/bin/arm-linux-androideabi-
+export CROSS_COMPILE=/home/nicklas/crosstool-toolchains/bin/arm-unknown-linux-gnueabihf-
 
 echo "
 ###Building zImage"
@@ -106,7 +100,7 @@ echo "
 ###Compiler process is written on compileLog for simple interfaces"
 
 make ARCH=arm cyanogenmod_nicki_defconfig
-make ARCH=arm CROSS_COMPILE=/home/nicklas/UBERTC-5.3.0/bin/arm-linux-androideabi- > compileLog
+make ARCH=arm CROSS_COMPILE=/home/nicklas/crosstool-toolchains/bin/arm-unknown-linux-gnueabihf- > compileLog
 
 echo "
 ##Creating Modules kernel"

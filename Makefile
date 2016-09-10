@@ -193,8 +193,7 @@ SUBARCH := $(shell uname -m | sed -e s/i.86/i386/ -e s/sun4u/sparc64/ \
 # Note: Some architectures assign CROSS_COMPILE in their arch/*/Makefile
 export KBUILD_BUILDHOST := $(SUBARCH)
 ARCH		= arm
-CROSS_COMPILE	= /home/nicklas/UBERTC-5.3.0/bin/arm-linux-androideabi-
-
+CROSS_COMPILE	= /home/nicklas/crosstool-toolchains/bin/arm-unknown-linux-gnueabihf-
 # Architecture as present in compile.h
 UTS_MACHINE 	:= $(ARCH)
 SRCARCH 	:= $(ARCH)
@@ -345,13 +344,14 @@ KALLSYMS	= scripts/kallsyms
 PERL		= perl
 CHECK		= sparse
 
+
 CHECKFLAGS     := -D__linux__ -Dlinux -D__STDC__ -Dunix -D__unix__ \
-		   -Wbitwise -Wno-return-void $(CF)
+		  -Wbitwise -Wno-return-void $(CF)
 CFLAGS_MODULE   =
 AFLAGS_MODULE   =
 LDFLAGS_MODULE  =
-CFLAGS_KERNEL   = -mcpu=cortex-a7 -mtune=cortex-a7 -mfpu=neon-vfpv4 -ftree-vectorize -funsafe-math-optimizations
-AFLAGS_KERNEL   = -mcpu=cortex-a7 -mtune=cortex-a7 -mfpu=neon-vfpv4 -ftree-vectorize -funsafe-math-optimizations 
+CFLAGS_KERNEL   = -mcpu=cortex-a7 -mfpu=neon-vfpv4 -ftree-vectorize -funsafe-math-optimizations
+AFLAGS_KERNEL   = -mcpu=cortex-a7 -mfpu=neon-vfpv4 -ftree-vectorize -funsafe-math-optimizations  
 CFLAGS_GCOV	= -fprofile-arcs -ftest-coverage
 
 
@@ -369,13 +369,13 @@ KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -Wno-sizeof-
 		   -Werror-implicit-function-declaration \
 		   -Wno-format-security \
 		   -fno-delete-null-pointer-checks \
-		   -std=gnu89
-
+		   -std=gnu89 \
+		   
 KBUILD_AFLAGS_KERNEL :=
 KBUILD_CFLAGS_KERNEL :=
 KBUILD_AFLAGS   := -D__ASSEMBLY__
 KBUILD_AFLAGS_MODULE  := -DMODULE
-KBUILD_CFLAGS_MODULE  := -DMODULE
+KBUILD_CFLAGS_MODULE  := -DMODULE 
 KBUILD_LDFLAGS_MODULE := -T $(srctree)/scripts/module-common.lds
 
 # Read KERNELRELEASE from include/config/kernel.release (if it exists)
@@ -632,7 +632,7 @@ CHECKFLAGS     += $(NOSTDINC_FLAGS)
 KBUILD_CFLAGS   += $(call cc-option,-Wdeclaration-after-statement,)
 
 # disable pointer signed / unsigned warnings in gcc 4.0
-KBUILD_CFLAGS   += $(call cc-disable-warning, pointer-sign)
+KBUILD_CFLAGS 	+= $(call cc-disable-warning, pointer-sign)
 
 # disable invalid "can't wrap" optimizations for signed / pointers
 KBUILD_CFLAGS   += $(call cc-option,-fno-strict-overflow)
