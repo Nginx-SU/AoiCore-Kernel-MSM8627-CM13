@@ -244,7 +244,7 @@ CONFIG_SHELL := $(shell if [ -x "$$BASH" ]; then echo $$BASH; \
 
 HOSTCC       = gcc
 HOSTCXX      = g++
-HOSTCFLAGS   = -Wall -Wmissing-prototypes -Wstrict-prototypes -O3 -fomit-frame-pointer -fgcse-las
+HOSTCFLAGS   = -Wall -Wmissing-prototypes -Wstrict-prototypes -O3 -fomit-frame-pointer -fgcse-las -std=gnu89
 HOSTCXXFLAGS = -O3 -fgcse-las
 
 # Decide whether to build built-in, modular, or both.
@@ -350,8 +350,8 @@ CHECKFLAGS     := -D__linux__ -Dlinux -D__STDC__ -Dunix -D__unix__ \
 CFLAGS_MODULE   =
 AFLAGS_MODULE   =
 LDFLAGS_MODULE  =
-CFLAGS_KERNEL   = -mcpu=cortex-a7 -mfpu=neon-vfpv4 -ftree-vectorize -funsafe-math-optimizations
-AFLAGS_KERNEL   = -mcpu=cortex-a7 -mfpu=neon-vfpv4 -ftree-vectorize -funsafe-math-optimizations  
+CFLAGS_KERNEL   = -mcpu=cortex-a7 -mfpu=neon-vfpv4 -ftree-vectorize -ffast-math
+AFLAGS_KERNEL   = -mcpu=cortex-a7 -mfpu=neon-vfpv4 -ftree-vectorize -ffast-math  
 CFLAGS_GCOV	= -fprofile-arcs -ftest-coverage
 
 
@@ -369,13 +369,14 @@ KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -Wno-sizeof-
 		   -Werror-implicit-function-declaration \
 		   -Wno-format-security \
 		   -fno-delete-null-pointer-checks \
+		   -ftree-vectorize \
 		   -std=gnu89 \
 		   
 KBUILD_AFLAGS_KERNEL :=
 KBUILD_CFLAGS_KERNEL :=
 KBUILD_AFLAGS   := -D__ASSEMBLY__
 KBUILD_AFLAGS_MODULE  := -DMODULE
-KBUILD_CFLAGS_MODULE  := -DMODULE 
+KBUILD_CFLAGS_MODULE  := -DMODULE
 KBUILD_LDFLAGS_MODULE := -T $(srctree)/scripts/module-common.lds
 
 # Read KERNELRELEASE from include/config/kernel.release (if it exists)
