@@ -1,3 +1,4 @@
+#!/bin/bash
 echo "AoiCore+.zip Builder"
 echo "#######Nicklas Van Dam#######"
 echo "###Starting...###"
