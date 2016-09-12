@@ -67,6 +67,7 @@ cp AoiCore+_EXT/drivers/cpufreq/Makefile android/kernel/drivers/cpufreq/Makefile
 cp AoiCore+_EXT/drivers/cpufreq/cpufreq_HYPER.c android/kernel/drivers/cpufreq/cpufreq_HYPER.c
 cp AoiCore+_EXT/drivers/cpufreq/cpufreq_intellidemand.c android/kernel/drivers/cpufreq/cpufreq_intellidemand.c
 cp AoiCore+_EXT/drivers/cpufreq/cpufreq_intellimm.c android/kernel/drivers/cpufreq/cpufreq_intellimm.c
+cp AoiCore+_EXT/drivers/cpufreq/cpufreq_impulse.c android/kernel/drivers/cpufreq/cpufreq_impulse.c
 cp AoiCore+_EXT/drivers/cpufreq/cpufreq_lionheart.c android/kernel/drivers/cpufreq/cpufreq_lionheart.c
 cp AoiCore+_EXT/drivers/cpufreq/cpufreq_lulzactive.c android/kernel/drivers/cpufreq/cpufreq_lulzactive.c
 cp AoiCore+_EXT/drivers/cpufreq/cpufreq_smartass2.c android/kernel/drivers/cpufreq/cpufreq_smartass2.c
@@ -85,10 +86,16 @@ cp AoiCore+_EXT/include/linux/compiler-gcc5.h android/kernel/include/linux/compi
 rm android/kernel/include/linux/cpufreq.h
 cp AoiCore+_EXT/include/linux/cpufreq.h android/kernel/include/linux/cpufreq.h
 cp AoiCore+_EXT/include/linux/fastchg.h android/kernel/include/linux/fastchg.h
+cp AoiCore+_EXT/include/linux/quickwakeup.h android/kernel/include/linux/quickwakeup.h
 rm android/kernel/kernel/sched/features.h
 cp AoiCore+_EXT/kernel/sched/features.h android/kernel/kernel/sched/features.h
 cd android/kernel
-
+rm android/kernel/power/Kconfig
+cp AoiCore+_EXT/kernel/power/Kconfig android/kernel/power/Kconfig
+rm android/kernel/power/Makefile
+cp AoiCore+_EXT/kernel/power/Makefile android/kernel/power/Makefile
+rm android/kernel/power/quickwakeup.c
+cp AoiCore+_EXT/kernel/power/quickwakeup.c android/kernel/power/quickwakeup.c
 echo "
 ###Running GCC Toolchains 5.3.0 (Crosstool-NG Toolchains)"
 
@@ -122,24 +129,7 @@ echo "##Cleaning Build"
 cd android/kernel
 make clean && make mrproper
 
-echo "##Creating boot.img"
-cd /home/nicklas/AoiCore+_EXT/AIK-Linux
-./unpackimg.sh
-rm split_img/boot.img-zImage
-cd /home/nicklas/AoiCore+_output
-cp zImage /home/nicklas/AoiCore+_EXT/AIK-Linux/split_img/boot.img-zImage
-cd /home/nicklas/AoiCore+_EXT/AIK-Linux
-./repackimg.sh
-mv image-new.img /home/nicklas/AoiCore+_EXT/boot.img
-
-echo "##Cleaning old boot.img"
-cd /home/nicklas/AoiCore+_EXT/AIK-Linux
-./cleanup.sh
-
-echo "##Done"
-
 echo "##Creating AoiCore+.zip"
-rm /home/nicklas/AoiCore+_output/zImage
 cd /home/nicklas/AoiCore+_EXT
 ./AoiCore+_Builder.sh
 
