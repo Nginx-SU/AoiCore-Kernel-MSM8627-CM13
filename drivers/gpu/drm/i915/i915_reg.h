@@ -615,6 +615,7 @@
 
 #define GEN6_BSD_RNCID			0x12198
 
+<<<<<<< HEAD
 #define GEN7_FF_THREAD_MODE		0x20a0
 #define   GEN7_FF_SCHED_MASK		0x0077070
 #define   GEN7_FF_TS_SCHED_HS1		(0x5<<16)
@@ -631,6 +632,8 @@
 #define   GEN7_FF_DS_SCHED_HW		(0x0<<4)
 
 
+=======
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 /*
  * Framebuffer compression (915+ only)
  */

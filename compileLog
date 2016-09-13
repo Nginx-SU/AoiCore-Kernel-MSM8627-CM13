@@ -435,7 +435,10 @@ scripts/kconfig/conf --silentoldconfig Kconfig
   CC      kernel/power/userwakelock.o
   CC      kernel/power/earlysuspend.o
   CC      kernel/power/fbearlysuspend.o
+<<<<<<< HEAD
   CC      kernel/power/quickwakeup.o
+=======
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
   CC      kernel/power/poweroff.o
   CC      kernel/power/wakeup_reason.o
   LD      kernel/power/built-in.o
@@ -1019,7 +1022,10 @@ scripts/kconfig/conf --silentoldconfig Kconfig
   CC      drivers/cpufreq/cpufreq_smartass2.o
   CC      drivers/cpufreq/cpufreq_lionheart.o
   CC      drivers/cpufreq/cpufreq_lulzactive.o
+<<<<<<< HEAD
   CC      drivers/cpufreq/cpufreq_impulse.o
+=======
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
   CC      drivers/cpufreq/cpufreq_HYPER.o
   CC      drivers/cpufreq/cpufreq_intellimm.o
   CC      drivers/cpufreq/cpufreq_savagedzen.o
@@ -1035,11 +1041,19 @@ scripts/kconfig/conf --silentoldconfig Kconfig
   CC      drivers/cpuidle/governors/menu.o
   LD      drivers/cpuidle/governors/built-in.o
   LD      drivers/cpuidle/built-in.o
+<<<<<<< HEAD
   CC      drivers/crypto/msm/qce40.o
   CC      drivers/crypto/msm/qcrypto.o
   LD      drivers/crypto/msm/built-in.o
   CC [M]  drivers/crypto/msm/qcedev.o
   LD      drivers/crypto/built-in.o
+=======
+  LD      drivers/crypto/built-in.o
+  LD      drivers/crypto/msm/built-in.o
+  CC [M]  drivers/crypto/msm/qcedev.o
+  CC [M]  drivers/crypto/msm/qce40.o
+  CC [M]  drivers/crypto/msm/qcrypto.o
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
   CC      drivers/development_tool/development_tool.o
   CC      drivers/development_tool/command_maker.o
   LD      drivers/development_tool/built-in.o
@@ -2808,7 +2822,11 @@ scripts/kconfig/conf --silentoldconfig Kconfig
   CC      lib/ratelimit.o
   CC      lib/rbtree.o
   CC      lib/reciprocal_div.o
+<<<<<<< HEAD
   CC      lib/rwsem.o
+=======
+  CC      lib/rwsem-spinlock.o
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
   CC      lib/sha1.o
   CC      lib/show_mem.o
   CC      lib/string.o
@@ -2849,15 +2867,28 @@ scripts/kconfig/conf --silentoldconfig Kconfig
   OBJCOPY arch/arm/boot/zImage
   Kernel: arch/arm/boot/zImage is ready
   Building modules, stage 2.
+<<<<<<< HEAD
   MODPOST 12 modules
+=======
+  MODPOST 14 modules
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
   CC      arch/arm/mach-msm/reset_modem.mod.o
   LD [M]  arch/arm/mach-msm/reset_modem.ko
   CC      crypto/ansi_cprng.mod.o
   LD [M]  crypto/ansi_cprng.ko
   CC      drivers/char/adsprpc.mod.o
   LD [M]  drivers/char/adsprpc.ko
+<<<<<<< HEAD
   CC      drivers/crypto/msm/qcedev.mod.o
   LD [M]  drivers/crypto/msm/qcedev.ko
+=======
+  CC      drivers/crypto/msm/qce40.mod.o
+  LD [M]  drivers/crypto/msm/qce40.ko
+  CC      drivers/crypto/msm/qcedev.mod.o
+  LD [M]  drivers/crypto/msm/qcedev.ko
+  CC      drivers/crypto/msm/qcrypto.mod.o
+  LD [M]  drivers/crypto/msm/qcrypto.ko
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
   CC      drivers/gud/mcdrvmodule.mod.o
   LD [M]  drivers/gud/mcdrvmodule.ko
   CC      drivers/gud/mckernelapi.mod.o

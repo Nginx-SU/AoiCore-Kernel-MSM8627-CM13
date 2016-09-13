@@ -568,7 +568,10 @@ int xhci_hub_control(struct usb_hcd *hcd, u16 typeReq, u16 wValue,
 				xhci_dbg(xhci, "Resume USB2 port %d\n",
 					wIndex + 1);
 				bus_state->resume_done[wIndex] = 0;
+<<<<<<< HEAD
 				clear_bit(wIndex, &bus_state->resuming_ports);
+=======
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 				xhci_set_link_state(xhci, port_array, wIndex,
 							XDEV_U0);
 				xhci_dbg(xhci, "set port %d resume\n",
@@ -864,12 +867,15 @@ int xhci_hub_status_data(struct usb_hcd *hcd, char *buf)
 	memset(buf, 0, retval);
 	status = 0;
 
+<<<<<<< HEAD
 	/*
  	 * Inform the usbcore about resume-in-progress by returning
  	 * a non-zero value even if there are no status changes.
  	 */
  	status = bus_state->resuming_ports;
 
+=======
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 	mask = PORT_CSC | PORT_PEC | PORT_OCC | PORT_PLC | PORT_WRC;
 
 	spin_lock_irqsave(&xhci->lock, flags);
@@ -908,11 +914,23 @@ int xhci_bus_suspend(struct usb_hcd *hcd)
 	spin_lock_irqsave(&xhci->lock, flags);
 
 	if (hcd->self.root_hub->do_remote_wakeup) {
+<<<<<<< HEAD
 		if (bus_state->resuming_ports) {
 			spin_unlock_irqrestore(&xhci->lock, flags);
 			xhci_dbg(xhci, "suspend failed because "
 						"a port is resuming\n");
 			return -EBUSY;
+=======
+		port_index = max_ports;
+		while (port_index--) {
+			if (bus_state->resume_done[port_index] != 0) {
+				spin_unlock_irqrestore(&xhci->lock, flags);
+				xhci_dbg(xhci, "suspend failed because "
+						"port %d is resuming\n",
+						port_index + 1);
+				return -EBUSY;
+			}
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 		}
 	}
 

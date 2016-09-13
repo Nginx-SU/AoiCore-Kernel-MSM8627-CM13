@@ -1791,6 +1791,7 @@ void xhci_mem_cleanup(struct xhci_hcd *xhci)
 {
 	struct pci_dev	*pdev = to_pci_dev(xhci_to_hcd(xhci)->self.controller);
 	struct dev_info	*dev_info, *next;
+<<<<<<< HEAD
 	struct list_head *tt_list_head;
  	struct list_head *tt;
  	struct list_head *endpoints;
@@ -1799,6 +1800,8 @@ void xhci_mem_cleanup(struct xhci_hcd *xhci)
  	struct xhci_interval_bw_table *bwt;
 	struct xhci_virt_ep *virt_ep;
 
+=======
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 	unsigned long	flags;
 	int size;
 	int i;
@@ -1815,7 +1818,10 @@ void xhci_mem_cleanup(struct xhci_hcd *xhci)
 	xhci->event_ring = NULL;
 	xhci_dbg(xhci, "Freed event ring\n");
 
+<<<<<<< HEAD
 	xhci->cmd_ring_reserved_trbs = 0;
+=======
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 	if (xhci->cmd_ring)
 		xhci_ring_free(xhci, xhci->cmd_ring);
 	xhci->cmd_ring = NULL;
@@ -1858,6 +1864,7 @@ void xhci_mem_cleanup(struct xhci_hcd *xhci)
 	}
 	spin_unlock_irqrestore(&xhci->lock, flags);
 
+<<<<<<< HEAD
 	bwt = &xhci->rh_bw->bw_table;
  	for (i = 0; i < XHCI_MAX_INTERVAL; i++) {
  		endpoints = &bwt->interval_bw[i].endpoints;
@@ -1878,11 +1885,19 @@ void xhci_mem_cleanup(struct xhci_hcd *xhci)
 	xhci->num_usb2_ports = 0;
 	xhci->num_usb3_ports = 0;
 	xhci->num_active_eps = 0;
+=======
+	xhci->num_usb2_ports = 0;
+	xhci->num_usb3_ports = 0;
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 	kfree(xhci->usb2_ports);
 	kfree(xhci->usb3_ports);
 	kfree(xhci->port_array);
 	kfree(xhci->rh_bw);
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 	xhci->page_size = 0;
 	xhci->page_shift = 0;
 	xhci->bus_state[0].bus_suspended = 0;

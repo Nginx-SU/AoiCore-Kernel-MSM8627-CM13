@@ -89,6 +89,7 @@ cp AoiCore+_EXT/include/linux/fastchg.h android/kernel/include/linux/fastchg.h
 cp AoiCore+_EXT/include/linux/quickwakeup.h android/kernel/include/linux/quickwakeup.h
 rm android/kernel/kernel/sched/features.h
 cp AoiCore+_EXT/kernel/sched/features.h android/kernel/kernel/sched/features.h
+<<<<<<< HEAD
 rm android/kernel/kernel/power/Kconfig
 cp AoiCore+_EXT/kernel/power/Kconfig android/kernel/kernel/power/Kconfig
 rm android/kernel/kernel/power/Makefile
@@ -96,6 +97,15 @@ cp AoiCore+_EXT/kernel/power/Makefile android/kernel/kernel/power/Makefile
 cp AoiCore+_EXT/kernel/power/quickwakeup.c android/kernel/kernel/power/quickwakeup.c
 cd android/kernel
 
+=======
+cd android/kernel
+rm android/kernel/power/Kconfig
+cp AoiCore+_EXT/kernel/power/Kconfig android/kernel/power/Kconfig
+rm android/kernel/power/Makefile
+cp AoiCore+_EXT/kernel/power/Makefile android/kernel/power/Makefile
+rm android/kernel/power/quickwakeup.c
+cp AoiCore+_EXT/kernel/power/quickwakeup.c android/kernel/power/quickwakeup.c
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 echo "
 ###Running GCC Toolchains 5.3.0 (Crosstool-NG Toolchains)"
 
@@ -135,4 +145,7 @@ cd /home/nicklas/AoiCore+_EXT
 
 echo "Script Complete Successfuly"
 echo "Nicklas Van Dam @ XDA"
+<<<<<<< HEAD
 
+=======
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36

@@ -13,7 +13,11 @@ obj-$(CONFIG_CPU_FREQ_GOV_INTERACTIVE)	+= cpufreq_interactive.o
 obj-$(CONFIG_CPU_FREQ_GOV_SMARTASS2)	+= cpufreq_smartass2.o
 obj-$(CONFIG_CPU_FREQ_GOV_LIONHEART)	+= cpufreq_lionheart.o
 obj-$(CONFIG_CPU_FREQ_GOV_LULZACTIVE)	+= cpufreq_lulzactive.o
+<<<<<<< HEAD
 obj-$(CONFIG_CPU_FREQ_GOV_LULZACTIVE)	+= cpufreq_impulse.o
+=======
+obj-$(CONFIG_CPU_FREQ_GOV_IMPULSE)	+= cpufreq_impulse.o
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 obj-y	+= cpufreq_HYPER.o
 obj-y	+= cpufreq_intellimm.o
 obj-y	+= cpufreq_savagedzen.o

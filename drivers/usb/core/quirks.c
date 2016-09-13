@@ -122,10 +122,14 @@ static const struct usb_device_id usb_quirk_list[] = {
 
 	/* Guillemot Webcam Hercules Dualpix Exchange*/
 	{ USB_DEVICE(0x06f8, 0x3005), .driver_info = USB_QUIRK_RESET_RESUME },
+<<<<<<< HEAD
 	
 	/* Midiman M-Audio Keystation 88es */
  	{ USB_DEVICE(0x0763, 0x0192), .driver_info = USB_QUIRK_RESET_RESUME },
  
+=======
+
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 	/* M-Systems Flash Disk Pioneers */
 	{ USB_DEVICE(0x08ec, 0x1000), .driver_info = USB_QUIRK_RESET_RESUME },
 

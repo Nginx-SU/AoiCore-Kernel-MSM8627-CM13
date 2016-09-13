@@ -1571,6 +1571,11 @@ static void b43legacy_request_firmware(struct work_struct *work)
 	const char *filename;
 	int err;
 
+<<<<<<< HEAD
+=======
+	/* do dummy read */
+	ssb_read32(dev->dev, SSB_TMSHIGH);
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 	if (!fw->ucode) {
 		if (rev == 2)
 			filename = "ucode2";

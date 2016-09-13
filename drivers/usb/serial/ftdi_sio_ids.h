@@ -785,6 +785,7 @@
 #define RTSYSTEMS_SERIAL_VX7_PID	0x9e52	/* Serial converter for VX-7 Radios using FT232RL */
 #define RTSYSTEMS_CT29B_PID		0x9e54	/* CT29B Radio Cable */
 
+<<<<<<< HEAD
 
 /*
   * Physik Instrumente
@@ -793,6 +794,8 @@
 #define PI_VID              0x1a72  /* Vendor ID */
 #define PI_E861_PID         0x1008  /* E-861 piezo controller USB connection */
  
+=======
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 /*
  * Bayer Ascensia Contour blood glucose meter USB-converter cable.
  * http://winglucofacts.com/cables/

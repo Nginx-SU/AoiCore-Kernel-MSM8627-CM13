@@ -9,7 +9,10 @@
  */
 
 #include <linux/types.h>
+<<<<<<< HEAD
 #include <linux/kconfig.h>
+=======
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 #include <linux/kernel.h>
 #include <linux/pci.h>
 #include <linux/init.h>
@@ -713,14 +716,19 @@ static int handshake(void __iomem *ptr, u32 mask, u32 done,
 	return -ETIMEDOUT;
 }
 
+<<<<<<< HEAD
 #define PCI_DEVICE_ID_INTEL_LYNX_POINT_XHCI	0x8C31
 
 bool usb_is_intel_ppt_switchable_xhci(struct pci_dev *pdev)
+=======
+bool usb_is_intel_switchable_xhci(struct pci_dev *pdev)
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 {
 	return pdev->class == PCI_CLASS_SERIAL_USB_XHCI &&
 		pdev->vendor == PCI_VENDOR_ID_INTEL &&
 		pdev->device == PCI_DEVICE_ID_INTEL_PANTHERPOINT_XHCI;
 }
+<<<<<<< HEAD
 
 /* The Intel Lynx Point chipset also has switchable ports. */
 bool usb_is_intel_lpt_switchable_xhci(struct pci_dev *pdev)
@@ -735,6 +743,8 @@ bool usb_is_intel_switchable_xhci(struct pci_dev *pdev)
 	return usb_is_intel_ppt_switchable_xhci(pdev) ||
 		usb_is_intel_lpt_switchable_xhci(pdev);
 }
+=======
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 EXPORT_SYMBOL_GPL(usb_is_intel_switchable_xhci);
 
 /*
@@ -759,6 +769,7 @@ void usb_enable_xhci_ports(struct pci_dev *xhci_pdev)
 {
 	u32		ports_available;
 
+<<<<<<< HEAD
 	/* Don't switchover the ports if the user hasn't compiled the xHCI
 	 * driver.  Otherwise they will see "dead" USB ports that don't power
 	 * the devices.
@@ -772,6 +783,8 @@ void usb_enable_xhci_ports(struct pci_dev *xhci_pdev)
 		return;
 	}
 
+=======
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 	ports_available = 0xffffffff;
 	/* Write USB3_PSSEN, the USB 3.0 Port SuperSpeed Enable
 	 * Register, to turn on SuperSpeed terminations for all

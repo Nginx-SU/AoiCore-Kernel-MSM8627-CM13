@@ -37,7 +37,11 @@ struct gpio_vbus_data {
 	struct regulator       *vbus_draw;
 	int			vbus_draw_enabled;
 	unsigned		mA;
+<<<<<<< HEAD
 	struct delayed_work	work;
+=======
+	struct work_struct	work;
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 };
 
 
@@ -94,7 +98,11 @@ static int is_vbus_powered(struct gpio_vbus_mach_info *pdata)
 static void gpio_vbus_work(struct work_struct *work)
 {
 	struct gpio_vbus_data *gpio_vbus =
+<<<<<<< HEAD
 		container_of(work, struct gpio_vbus_data, work.work);
+=======
+		container_of(work, struct gpio_vbus_data, work);
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 	struct gpio_vbus_mach_info *pdata = gpio_vbus->dev->platform_data;
 	int gpio, status;
 
@@ -152,7 +160,11 @@ static irqreturn_t gpio_vbus_irq(int irq, void *data)
 		otg->gadget ? otg->gadget->name : "none");
 
 	if (otg->gadget)
+<<<<<<< HEAD
 		schedule_delayed_work(&gpio_vbus->work, msecs_to_jiffies(100));
+=======
+		schedule_work(&gpio_vbus->work);
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 
 	return IRQ_HANDLED;
 }
@@ -300,7 +312,11 @@ static int __init gpio_vbus_probe(struct platform_device *pdev)
 
 	ATOMIC_INIT_NOTIFIER_HEAD(&gpio_vbus->phy.notifier);
 
+<<<<<<< HEAD
 	INIT_DELAYED_WORK(&gpio_vbus->work, gpio_vbus_work);
+=======
+	INIT_WORK(&gpio_vbus->work, gpio_vbus_work);
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 
 	gpio_vbus->vbus_draw = regulator_get(&pdev->dev, "vbus_draw");
 	if (IS_ERR(gpio_vbus->vbus_draw)) {

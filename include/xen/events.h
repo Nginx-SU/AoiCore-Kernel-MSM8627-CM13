@@ -103,9 +103,12 @@ int xen_irq_from_pirq(unsigned pirq);
 /* Return the pirq allocated to the irq. */
 int xen_pirq_from_irq(unsigned irq);
 
+<<<<<<< HEAD
 /* Return the irq allocated to the gsi */
 int xen_irq_from_gsi(unsigned gsi);
  
+=======
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 /* Determine whether to ignore this IRQ if it is passed to a guest. */
 int xen_test_irq_shared(int irq);
 

@@ -493,7 +493,10 @@ static __initconst const struct x86_pmu amd_pmu = {
  * 0x023	DE	PERF_CTL[2:0]
  * 0x02D	LS	PERF_CTL[3]
  * 0x02E	LS	PERF_CTL[3,0]
+<<<<<<< HEAD
  * 0x031	LS	PERF_CTL[2:0] (**)
+=======
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
  * 0x043	CU	PERF_CTL[2:0]
  * 0x045	CU	PERF_CTL[2:0]
  * 0x046	CU	PERF_CTL[2:0]
@@ -507,12 +510,19 @@ static __initconst const struct x86_pmu amd_pmu = {
  * 0x0DD	LS	PERF_CTL[5:0]
  * 0x0DE	LS	PERF_CTL[5:0]
  * 0x0DF	LS	PERF_CTL[5:0]
+<<<<<<< HEAD
  * 0x1C0	EX	PERF_CTL[5:3]
  * 0x1D6	EX	PERF_CTL[5:0]
  * 0x1D8	EX	PERF_CTL[5:0]
  *
  * (*)  depending on the umask all FPU counters may be used
  * (**) only one unitmask enabled at a time
+=======
+ * 0x1D6	EX	PERF_CTL[5:0]
+ * 0x1D8	EX	PERF_CTL[5:0]
+ *
+ * (*) depending on the umask all FPU counters may be used
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
  */
 
 static struct event_constraint amd_f15_PMC0  = EVENT_CONSTRAINT(0, 0x01, 0);
@@ -533,7 +543,11 @@ amd_get_event_constraints_f15h(struct cpu_hw_events *cpuc, struct perf_event *ev
 		switch (event_code) {
 		case 0x000:
 			if (!(hwc->config & 0x0000F000ULL))
+<<<<<<< HEAD
 			return &	break;
+=======
+				break;
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 			if (!(hwc->config & 0x00000F00ULL))
 				break;
 			return &amd_f15_PMC3;
@@ -562,12 +576,15 @@ amd_get_event_constraints_f15h(struct cpu_hw_events *cpuc, struct perf_event *ev
 			return &amd_f15_PMC3;
 		case 0x02E:
 			return &amd_f15_PMC30;
+<<<<<<< HEAD
 		case 0x031:
 			if (hweight_long(hwc->config & ARCH_PERFMON_EVENTSEL_UMASK) <= 1)
 				return &amd_f15_PMC20;
 			return &emptyconstraint;
 		case 0x1C0:
 			return &amd_f15_PMC53;
+=======
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 		default:
 			return &amd_f15_PMC50;
 		}

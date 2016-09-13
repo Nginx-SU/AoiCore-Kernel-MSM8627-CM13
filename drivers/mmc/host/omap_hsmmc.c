@@ -1971,7 +1971,11 @@ static int __devinit omap_hsmmc_probe(struct platform_device *pdev)
 		ret = request_threaded_irq(mmc_slot(host).card_detect_irq,
 					   NULL,
 					   omap_hsmmc_detect,
+<<<<<<< HEAD
 					   IRQF_TRIGGER_RISING | IRQF_TRIGGER_FALLING | IRQF_ONESHOT,
+=======
+					   IRQF_TRIGGER_RISING | IRQF_TRIGGER_FALLING,
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 					   mmc_hostname(mmc), host);
 		if (ret) {
 			dev_dbg(mmc_dev(host->mmc),

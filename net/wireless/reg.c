@@ -393,6 +393,7 @@ static void reg_regdb_query(const char *alpha2)
 	mutex_unlock(&reg_regdb_search_mutex);
 
 	schedule_work(&reg_regdb_work);
+<<<<<<< HEAD
 
 /* Feel free to add any other sanity checks here */
  static void reg_regdb_size_check(void)
@@ -403,6 +404,10 @@ static void reg_regdb_query(const char *alpha2)
 }
 #else
 static inline void reg_regdb_size_check(void) {}
+=======
+}
+#else
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 static inline void reg_regdb_query(const char *alpha2) {}
 #endif /* CONFIG_CFG80211_INTERNAL_REGDB */
 
@@ -2365,8 +2370,11 @@ int __init regulatory_init(void)
 	spin_lock_init(&reg_requests_lock);
 	spin_lock_init(&reg_pending_beacons_lock);
 
+<<<<<<< HEAD
 	reg_regdb_size_check();
  
+=======
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 	cfg80211_regdomain = cfg80211_world_regdom;
 
 	user_alpha2[0] = '9';

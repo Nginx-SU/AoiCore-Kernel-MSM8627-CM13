@@ -7619,8 +7619,13 @@ static void intel_sanitize_modesetting(struct drm_device *dev,
 	u32 reg, val;
 
 	/* Clear any frame start delays used for debugging left by the BIOS */
+<<<<<<< HEAD
 	for_each_pipe(i) {
 		reg = PIPECONF(i);
+=======
+	for_each_pipe(pipe) {
+		reg = PIPECONF(pipe);
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 		I915_WRITE(reg, I915_READ(reg) & ~PIPECONF_FRAME_START_DELAY_MASK);
 	}
 
@@ -8612,6 +8617,7 @@ static void gen6_init_clock_gating(struct drm_device *dev)
 	}
 }
 
+<<<<<<< HEAD
 static void gen7_setup_fixed_func_scheduler(struct drm_i915_private *dev_priv)
 {
 	uint32_t reg = I915_READ(GEN7_FF_THREAD_MODE);
@@ -8624,6 +8630,8 @@ static void gen7_setup_fixed_func_scheduler(struct drm_i915_private *dev_priv)
 	I915_WRITE(GEN7_FF_THREAD_MODE, reg);
 }
  
+=======
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 static void ivybridge_init_clock_gating(struct drm_device *dev)
 {
 	struct drm_i915_private *dev_priv = dev->dev_private;
@@ -8668,8 +8676,11 @@ static void ivybridge_init_clock_gating(struct drm_device *dev)
 			   DISPPLANE_TRICKLE_FEED_DISABLE);
 		intel_flush_display_plane(dev_priv, pipe);
 	}
+<<<<<<< HEAD
 
 	gen7_setup_fixed_func_scheduler(dev_priv);
+=======
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 }
 
 static void g4x_init_clock_gating(struct drm_device *dev)

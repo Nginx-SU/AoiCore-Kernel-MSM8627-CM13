@@ -1,6 +1,10 @@
 VERSION = 3
 PATCHLEVEL = 4
+<<<<<<< HEAD
 SUBLEVEL = 1
+=======
+SUBLEVEL = 0
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 EXTRAVERSION =
 NAME = Saber-toothed Squirrel
 
@@ -350,8 +354,13 @@ CHECKFLAGS     := -D__linux__ -Dlinux -D__STDC__ -Dunix -D__unix__ \
 CFLAGS_MODULE   =
 AFLAGS_MODULE   =
 LDFLAGS_MODULE  =
+<<<<<<< HEAD
 CFLAGS_KERNEL   = -mcpu=cortex-a7 -mfpu=neon-vfpv4 -ftree-vectorize -funsafe-math-optimizations
 AFLAGS_KERNEL   = -mcpu=cortex-a7 -mfpu=neon-vfpv4 -ftree-vectorize -funsafe-math-optimizations
+=======
+CFLAGS_KERNEL   = -mcpu=cortex-a7 -mfpu=neon-vfpv4 -ftree-vectorize -ffast-math
+AFLAGS_KERNEL   = -mcpu=cortex-a7 -mfpu=neon-vfpv4 -ftree-vectorize -ffast-math  
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 CFLAGS_GCOV	= -fprofile-arcs -ftest-coverage
 
 

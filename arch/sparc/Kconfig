@@ -584,10 +584,13 @@ config SYSVIPC_COMPAT
 	depends on COMPAT && SYSVIPC
 	default y
 
+<<<<<<< HEAD
  
 config KEYS_COMPAT
 	def_bool y if COMPAT && KEYS
 
+=======
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 endmenu
 
 source "net/Kconfig"

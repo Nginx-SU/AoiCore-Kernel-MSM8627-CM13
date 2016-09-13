@@ -295,7 +295,11 @@ static void *start_thread_helper(void *arg)
 	for (;;) {
 		pthread_testcancel();
 
+<<<<<<< HEAD
 		ret = t->out(t, t->buf, ret);
+=======
+		ret = t->in(t, t->buf, t->buf_size);
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 		if (ret > 0) {
 			ret = t->out(t, t->buf, t->buf_size);
 			name = out_name;

@@ -1232,7 +1232,10 @@ static int sel_make_bools(void)
 		kfree(bool_pending_names[i]);
 	kfree(bool_pending_names);
 	kfree(bool_pending_values);
+<<<<<<< HEAD
 	bool_num = 0;
+=======
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 	bool_pending_names = NULL;
 	bool_pending_values = NULL;
 

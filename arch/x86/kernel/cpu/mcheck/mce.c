@@ -437,6 +437,7 @@ static inline void mce_gather_info(struct mce *m, struct pt_regs *regs)
 		if (m->mcgstatus & (MCG_STATUS_RIPV|MCG_STATUS_EIPV)) {
 			m->ip = regs->ip;
 			m->cs = regs->cs;
+<<<<<<< HEAD
 			/*
 			 * When in VM86 mode make the cs look like ring 3
 			 * always. This is a lie, but it's better than passing
@@ -444,6 +445,8 @@ static inline void mce_gather_info(struct mce *m, struct pt_regs *regs)
 			 */
 			if (v8086_mode(regs))
 				m->cs |= 3
+=======
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 		}
 		/* Use accurate RIP reporting if available. */
 		if (rip_msr)

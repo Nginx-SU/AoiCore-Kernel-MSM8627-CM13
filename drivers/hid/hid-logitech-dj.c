@@ -26,7 +26,10 @@
 #include <linux/hid.h>
 #include <linux/module.h>
 #include <linux/usb.h>
+<<<<<<< HEAD
 #include <asm/unaligned.h>
+=======
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 #include "usbhid/usbhid.h"
 #include "hid-ids.h"
 #include "hid-logitech-dj.h"
@@ -266,8 +269,13 @@ static void logi_dj_recv_add_djhid_device(struct dj_receiver_dev *djrcv_dev,
 		goto dj_device_allocate_fail;
 	}
 
+<<<<<<< HEAD
 	dj_dev->reports_supported = get_unaligned_le32(
 		dj_report->report_params + DEVICE_PAIRED_RF_REPORT_TYPE);
+=======
+	dj_dev->reports_supported = le32_to_cpu(
+		dj_report->report_params[DEVICE_PAIRED_RF_REPORT_TYPE]);
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 	dj_dev->hdev = dj_hiddev;
 	dj_dev->dj_receiver_dev = djrcv_dev;
 	dj_dev->device_index = dj_report->device_index;

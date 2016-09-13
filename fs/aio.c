@@ -1460,10 +1460,13 @@ static ssize_t aio_setup_vectored_rw(int type, struct kiocb *kiocb, bool compat)
 	if (ret < 0)
 		goto out;
 
+<<<<<<< HEAD
 	ret = rw_verify_area(type, kiocb->ki_filp, &kiocb->ki_pos, ret);
  	if (ret < 0)
  		goto out;
  
+=======
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 	kiocb->ki_nr_segs = kiocb->ki_nbytes;
 	kiocb->ki_cur_seg = 0;
 	/* ki_nbytes/left now reflect bytes instead of segs */

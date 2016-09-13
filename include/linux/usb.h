@@ -1436,7 +1436,10 @@ extern void usb_kill_urb(struct urb *urb);
 extern void usb_poison_urb(struct urb *urb);
 extern void usb_unpoison_urb(struct urb *urb);
 extern void usb_block_urb(struct urb *urb);
+<<<<<<< HEAD
 extern void usb_block_urb(struct urb *urb);
+=======
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 extern void usb_kill_anchored_urbs(struct usb_anchor *anchor);
 extern void usb_poison_anchored_urbs(struct usb_anchor *anchor);
 extern void usb_unpoison_anchored_urbs(struct usb_anchor *anchor);

@@ -223,7 +223,11 @@ static void __devexit usb_hcd_at91_remove(struct usb_hcd *hcd,
 /*-------------------------------------------------------------------------*/
 
 static int __devinit
+<<<<<<< HEAD
 ohci_at91_reset (struct usb_hcd *hcd)
+=======
+ohci_at91_start (struct usb_hcd *hcd)
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 {
 	struct at91_usbh_data	*board = hcd->self.controller->platform_data;
 	struct ohci_hcd		*ohci = hcd_to_ohci (hcd);
@@ -233,6 +237,7 @@ ohci_at91_reset (struct usb_hcd *hcd)
 		return ret;
 
 	ohci->num_ports = board->ports;
+<<<<<<< HEAD
 	return 0;
 }
 
@@ -241,6 +246,8 @@ ohci_at91_start (struct usb_hcd *hcd)
 {
 	struct ohci_hcd		*ohci = hcd_to_ohci (hcd);
 	int			ret;
+=======
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 
 	if ((ret = ohci_run(ohci)) < 0) {
 		err("can't start %s", hcd->self.bus_name);
@@ -426,7 +433,10 @@ static const struct hc_driver ohci_at91_hc_driver = {
 	/*
 	 * basic lifecycle operations
 	 */
+<<<<<<< HEAD
 	.reset =		ohci_at91_reset,
+=======
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 	.start =		ohci_at91_start,
 	.stop =			ohci_stop,
 	.shutdown =		ohci_shutdown,

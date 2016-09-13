@@ -309,6 +309,12 @@ static void free_urbs(struct wdm_device *desc)
 
 static void cleanup(struct wdm_device *desc)
 {
+<<<<<<< HEAD
+=======
+	spin_lock(&wdm_device_list_lock);
+	list_del(&desc->device_list);
+	spin_unlock(&wdm_device_list_lock);
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 	kfree(desc->sbuf);
 	kfree(desc->inbuf);
 	kfree(desc->orq);
@@ -527,6 +533,7 @@ static int wdm_flush(struct file *file, fl_owner_t id)
 	struct wdm_device *desc = file->private_data;
 
 	wait_event(desc->wait, !test_bit(WDM_IN_USE, &desc->flags));
+<<<<<<< HEAD
 
 	/* cannot dereference desc->intf if WDM_DISCONNECTING */
 	if (desc->werr < 0 && !test_bit(WDM_DISCONNECTING, &desc->flags))
@@ -534,6 +541,13 @@ static int wdm_flush(struct file *file, fl_owner_t id)
 			desc->werr);
 
 	return usb_translate_errors(desc->werr);
+=======
+	if (desc->werr < 0)
+		dev_err(&desc->intf->dev, "Error in flush path: %d\n",
+			desc->werr);
+
+	return desc->werr;
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 }
 
 static unsigned int wdm_poll(struct file *file, struct poll_table_struct *wait)
@@ -544,7 +558,11 @@ static unsigned int wdm_poll(struct file *file, struct poll_table_struct *wait)
 
 	spin_lock_irqsave(&desc->iuspin, flags);
 	if (test_bit(WDM_DISCONNECTING, &desc->flags)) {
+<<<<<<< HEAD
 		mask = POLLHUP | POLLERR;
+=======
+		mask = POLLERR;
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 		spin_unlock_irqrestore(&desc->iuspin, flags);
 		goto desc_out;
 	}
@@ -620,6 +638,7 @@ static int wdm_release(struct inode *inode, struct file *file)
 	mutex_unlock(&desc->wlock);
 
 	if (!desc->count) {
+<<<<<<< HEAD
 		if (!test_bit(WDM_DISCONNECTING, &desc->flags)) {
 			dev_dbg(&desc->intf->dev, "wdm_release: cleanup");
 			kill_urbs(desc);
@@ -630,6 +649,13 @@ static int wdm_release(struct inode *inode, struct file *file)
 			cleanup(desc);
 		}
 }
+=======
+		dev_dbg(&desc->intf->dev, "wdm_release: cleanup");
+		kill_urbs(desc);
+		if (!test_bit(WDM_DISCONNECTING, &desc->flags))
+			desc->manage_power(desc->intf, 0);
+	}
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 	mutex_unlock(&wdm_mutex);
 	return 0;
 }
@@ -775,9 +801,12 @@ static int wdm_create(struct usb_interface *intf, struct usb_endpoint_descriptor
 out:
 	return rv;
 err:
+<<<<<<< HEAD
 	spin_lock(&wdm_device_list_lock);
 	list_del(&desc->device_list);
 	spin_unlock(&wdm_device_list_lock);
+=======
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 	cleanup(desc);
 	return rv;
 }
@@ -903,12 +932,15 @@ static void wdm_disconnect(struct usb_interface *intf)
 	cancel_work_sync(&desc->rxwork);
 	mutex_unlock(&desc->wlock);
 	mutex_unlock(&desc->rlock);
+<<<<<<< HEAD
 
 	/* the desc->intf pointer used as list key is now invalid */
 	spin_lock(&wdm_device_list_lock);
 	list_del(&desc->device_list);
 	spin_unlock(&wdm_device_list_lock);
 
+=======
+>>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 	if (!desc->count)
 		cleanup(desc);
 	mutex_unlock(&wdm_mutex);
