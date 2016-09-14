@@ -401,11 +401,6 @@ static irqreturn_t tegra_i2c_isr(int irq, void *dev_id)
 			disable_irq_nosync(i2c_dev->irq);
 			i2c_dev->irq_disabled = 1;
 		}
-<<<<<<< HEAD
-=======
-
-		complete(&i2c_dev->msg_complete);
->>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 		goto err;
 	}
 
@@ -414,10 +409,6 @@ static irqreturn_t tegra_i2c_isr(int irq, void *dev_id)
 			i2c_dev->msg_err |= I2C_ERR_NO_ACK;
 		if (status & I2C_INT_ARBITRATION_LOST)
 			i2c_dev->msg_err |= I2C_ERR_ARBITRATION_LOST;
-<<<<<<< HEAD
-=======
-		complete(&i2c_dev->msg_complete);
->>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 		goto err;
 	}
 
@@ -435,24 +426,14 @@ static irqreturn_t tegra_i2c_isr(int irq, void *dev_id)
 			tegra_i2c_mask_irq(i2c_dev, I2C_INT_TX_FIFO_DATA_REQ);
 	}
 
-<<<<<<< HEAD
 	i2c_writel(i2c_dev, status, I2C_INT_STATUS);
 	if (i2c_dev->is_dvc)
 		dvc_writel(i2c_dev, DVC_STATUS_I2C_DONE_INTR, DVC_STATUS);
 
-=======
->>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 	if (status & I2C_INT_PACKET_XFER_COMPLETE) {
 		BUG_ON(i2c_dev->msg_buf_remaining);
 		complete(&i2c_dev->msg_complete);
 	}
-<<<<<<< HEAD
-=======
-
-	i2c_writel(i2c_dev, status, I2C_INT_STATUS);
-	if (i2c_dev->is_dvc)
-		dvc_writel(i2c_dev, DVC_STATUS_I2C_DONE_INTR, DVC_STATUS);
->>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 	return IRQ_HANDLED;
 err:
 	/* An error occurred, mask all interrupts */
@@ -462,11 +443,8 @@ err:
 	i2c_writel(i2c_dev, status, I2C_INT_STATUS);
 	if (i2c_dev->is_dvc)
 		dvc_writel(i2c_dev, DVC_STATUS_I2C_DONE_INTR, DVC_STATUS);
-<<<<<<< HEAD
 
 	complete(&i2c_dev->msg_complete);
-=======
->>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 	return IRQ_HANDLED;
 }
 

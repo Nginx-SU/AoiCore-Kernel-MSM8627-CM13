@@ -2286,15 +2286,6 @@ static int domain_add_dev_info(struct dmar_domain *domain,
 	if (!info)
 		return -ENOMEM;
 
-<<<<<<< HEAD
-=======
-	ret = domain_context_mapping(domain, pdev, translation);
-	if (ret) {
-		free_devinfo_mem(info);
-		return ret;
-	}
-
->>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 	info->segment = pci_domain_nr(pdev->bus);
 	info->bus = pdev->bus->number;
 	info->devfn = pdev->devfn;
@@ -2307,7 +2298,6 @@ static int domain_add_dev_info(struct dmar_domain *domain,
 	pdev->dev.archdata.iommu = info;
 	spin_unlock_irqrestore(&device_domain_lock, flags);
 
-<<<<<<< HEAD
 	ret = domain_context_mapping(domain, pdev, translation);
 	if (ret) {
 		spin_lock_irqsave(&device_domain_lock, flags);
@@ -2319,8 +2309,6 @@ static int domain_add_dev_info(struct dmar_domain *domain,
 		return ret;
 	}
 
-=======
->>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 	return 0;
 }
 

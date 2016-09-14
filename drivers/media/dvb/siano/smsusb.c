@@ -542,11 +542,8 @@ static const struct usb_device_id smsusb_id_table[] __devinitconst = {
 		.driver_info = SMS1XXX_BOARD_HAUPPAUGE_WINDHAM },
 	{ USB_DEVICE(0x2040, 0xc090),
 		.driver_info = SMS1XXX_BOARD_HAUPPAUGE_WINDHAM },
-<<<<<<< HEAD
 	{ USB_DEVICE(0x2040, 0xc0a0),
 		.driver_info = SMS1XXX_BOARD_HAUPPAUGE_WINDHAM },
-=======
->>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 	{ } /* Terminating entry */
 	};
 

@@ -64,13 +64,10 @@ static int xen_register_pirq(u32 gsi, int gsi_override, int triggering,
 	int shareable = 0;
 	char *name;
 
-<<<<<<< HEAD
 	irq = xen_irq_from_gsi(gsi);
 	if (irq > 0)
 		return irq;
 
-=======
->>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 	if (set_pirq)
 		pirq = gsi;
 

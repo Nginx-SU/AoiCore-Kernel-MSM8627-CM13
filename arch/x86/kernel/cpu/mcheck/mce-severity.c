@@ -165,7 +165,6 @@ static struct severity {
 };
 
 /*
-<<<<<<< HEAD
 * If mcgstatus indicated that ip/cs on the stack were
 * no good, then "m->cs" will be zero and we will have
 * to assume the worst case (IN_KERNEL) as we actually
@@ -175,21 +174,13 @@ static struct severity {
 * case we were executing in VM86 mode) we can use it to
 * distinguish an exception taken in user from from one
 * taken in the kernel.
-=======
- * If the EIPV bit is set, it means the saved IP is the
- * instruction which caused the MCE.
->>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
  */
 static int error_context(struct mce *m)
 {
 	if (m->mcgstatus & MCG_STATUS_EIPV)
 		return (m->ip && (m->cs & 3) == 3) ? IN_USER : IN_KERNEL;
 	/* Unknown, assume kernel */
-<<<<<<< HEAD
 	return ((m->cs & 3) == 3) ? IN_USER : IN_KERNEL;
-=======
-	return IN_KERNEL;
->>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 }
 
 int mce_severity(struct mce *m, int tolerant, char **msg)

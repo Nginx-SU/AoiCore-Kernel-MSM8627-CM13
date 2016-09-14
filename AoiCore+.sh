@@ -89,13 +89,14 @@ cp AoiCore+_EXT/include/linux/fastchg.h android/kernel/include/linux/fastchg.h
 cp AoiCore+_EXT/include/linux/quickwakeup.h android/kernel/include/linux/quickwakeup.h
 rm android/kernel/kernel/sched/features.h
 cp AoiCore+_EXT/kernel/sched/features.h android/kernel/kernel/sched/features.h
+rm android/kernel/kernel/power/Kconfig
+cp AoiCore+_EXT/kernel/power/Kconfig android/kernel/kernel/power/Kconfig
+rm android/kernel/kernel/power/Makefile
+cp AoiCore+_EXT/kernel/power/Makefile android/kernel/kernel/power/Makefile
+cp AoiCore+_EXT/kernel/power/quickwakeup.c android/kernel/kernel/power/quickwakeup.c
+rm android/kernel/mm/ksm.c
+cp AoiCore+_EXT/mm/ksm.c android/kernel/mm/ksm.c
 cd android/kernel
-rm android/kernel/power/Kconfig
-cp AoiCore+_EXT/kernel/power/Kconfig android/kernel/power/Kconfig
-rm android/kernel/power/Makefile
-cp AoiCore+_EXT/kernel/power/Makefile android/kernel/power/Makefile
-rm android/kernel/power/quickwakeup.c
-cp AoiCore+_EXT/kernel/power/quickwakeup.c android/kernel/power/quickwakeup.c
 echo "
 ###Running GCC Toolchains 5.3.0 (Crosstool-NG Toolchains)"
 

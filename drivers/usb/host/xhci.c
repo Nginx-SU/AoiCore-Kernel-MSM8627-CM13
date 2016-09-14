@@ -152,11 +152,7 @@ int xhci_reset(struct xhci_hcd *xhci)
 {
 	u32 command;
 	u32 state;
-<<<<<<< HEAD
 	int ret, i;
-=======
-	int ret;
->>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 
 	state = xhci_readl(xhci, &xhci->op_regs->status);
 	if ((state & STS_HALT) == 0) {
@@ -179,7 +175,6 @@ int xhci_reset(struct xhci_hcd *xhci)
 	 * xHCI cannot write to any doorbells or operational registers other
 	 * than status until the "Controller Not Ready" flag is cleared.
 	 */
-<<<<<<< HEAD
 	ret = handshake(xhci, &xhci->op_regs->status, STS_CNR, 0, 250 * 1000);
 
 	for (i = 0; i < 2; ++i) {
@@ -189,9 +184,6 @@ int xhci_reset(struct xhci_hcd *xhci)
 	}
 
 	return ret;
-=======
-	return handshake(xhci, &xhci->op_regs->status, STS_CNR, 0, 250 * 1000);
->>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 }
 
 #ifdef CONFIG_PCI

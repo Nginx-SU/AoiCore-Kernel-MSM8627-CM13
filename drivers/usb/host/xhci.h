@@ -1362,11 +1362,8 @@ struct xhci_bus_state {
 	u32			suspended_ports;
 	u32			port_remote_wakeup;
 	unsigned long		resume_done[USB_MAXCHILDREN];
-<<<<<<< HEAD
 	/* which ports have started to resume */
  	unsigned long		resuming_ports;
-=======
->>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 };
 
 static inline unsigned int hcd_index(struct usb_hcd *hcd)
@@ -1484,10 +1481,7 @@ struct xhci_hcd {
 #define XHCI_RESET_ON_RESUME	(1 << 7)
 #define	XHCI_SW_BW_CHECKING	(1 << 8)
 #define XHCI_AMD_0x96_HOST	(1 << 9)
-<<<<<<< HEAD
 #define XHCI_TRUST_TX_LENGTH	(1 << 10)
-=======
->>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 /*
  * In Synopsis DWC3 controller, PORTSC register access involves multiple clock
  * domains. When the software does a PORTSC write, handshakes are needed

@@ -1885,7 +1885,6 @@ UNUSUAL_DEV(  0x1652, 0x6600, 0x0201, 0x0201,
 		USB_SC_DEVICE, USB_PR_DEVICE, NULL,
 		US_FL_IGNORE_RESIDUE ),
 
-<<<<<<< HEAD
 /* Reported by Jesse Feddema <jdfeddema@gmail.com> */
  UNUSUAL_DEV(  0x177f, 0x0400, 0x0000, 0x0000,
  		"Yarvik",
@@ -1893,8 +1892,6 @@ UNUSUAL_DEV(  0x1652, 0x6600, 0x0201, 0x0201,
  		USB_SC_DEVICE, USB_PR_DEVICE, NULL,
  		US_FL_BULK_IGNORE_TAG | US_FL_MAX_SECTORS_64 ),
 
-=======
->>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 /* Reported by Hans de Goede <hdegoede@redhat.com>
  * These Appotech controllers are found in Picture Frames, they provide a
  * (buggy) emulation of a cdrom drive which contains the windows software

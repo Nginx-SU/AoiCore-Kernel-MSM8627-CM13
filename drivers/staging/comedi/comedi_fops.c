@@ -280,11 +280,7 @@ static int do_devconfig_ioctl(struct comedi_device *dev,
 	if (ret == 0) {
 		if (!try_module_get(dev->driver->module)) {
 			comedi_device_detach(dev);
-<<<<<<< HEAD
 			ret = -ENOSYS;
-=======
-			return -ENOSYS;
->>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 		}
 	}
 

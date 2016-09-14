@@ -14,10 +14,7 @@
 #include "gigaset.h"
 #include <linux/proc_fs.h>
 #include <linux/seq_file.h>
-<<<<<<< HEAD
 #include <linux/ratelimit.h>
-=======
->>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 #include <linux/isdn/capilli.h>
 #include <linux/isdn/capicmd.h>
 #include <linux/isdn/capiutil.h>
@@ -231,11 +228,8 @@ static inline void dump_cmsg(enum debuglevel level, const char *tag, _cmsg *p)
 
 	if (!(gigaset_debuglevel & level))
 		return;
-<<<<<<< HEAD
 	if (!___ratelimit(&msg_dump_ratelimit, tag))
 		return;
-=======
->>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 
 	cdb = capi_cmsg2str(p);
 	if (cdb) {
@@ -1891,12 +1885,9 @@ static void do_disconnect_req(struct gigaset_capi_ctr *iif,
 
 	/* check for active logical connection */
 	if (bcs->apconnstate >= APCONN_ACTIVE) {
-<<<<<<< HEAD
 		/* clear it */
 		bcs->apconnstate = APCONN_SETUP;
 
-=======
->>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 		/*
 		 * emit DISCONNECT_B3_IND with cause 0x3301
 		 * use separate cmsg structure, as the content of iif->acmsg
@@ -1921,10 +1912,7 @@ static void do_disconnect_req(struct gigaset_capi_ctr *iif,
 		}
 		capi_cmsg2message(b3cmsg,
 				  __skb_put(b3skb, CAPI_DISCONNECT_B3_IND_BASELEN));
-<<<<<<< HEAD
 		dump_cmsg(DEBUG_CMD, __func__, b3cmsg);
-=======
->>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 		kfree(b3cmsg);
 		capi_ctr_handle_message(&iif->ctr, ap->id, b3skb);
 	}
@@ -2078,15 +2066,6 @@ static void do_reset_b3_req(struct gigaset_capi_ctr *iif,
 }
 
 /*
-<<<<<<< HEAD
-=======
- * dump unsupported/ignored messages at most twice per minute,
- * some apps send those very frequently
- */
-static unsigned long ignored_msg_dump_time;
-
-/*
->>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
  * unsupported CAPI message handler
  */
 static void do_unsupported(struct gigaset_capi_ctr *iif,
@@ -2095,12 +2074,7 @@ static void do_unsupported(struct gigaset_capi_ctr *iif,
 {
 	/* decode message */
 	capi_message2cmsg(&iif->acmsg, skb->data);
-<<<<<<< HEAD
 	dump_cmsg(DEBUG_CMD, __func__, &iif->acmsg);
-=======
-	if (printk_timed_ratelimit(&ignored_msg_dump_time, 30 * 1000))
-		dump_cmsg(DEBUG_CMD, __func__, &iif->acmsg);
->>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 	send_conf(iif, ap, skb, CapiMessageNotSupportedInCurrentState);
 }
 
@@ -2111,17 +2085,9 @@ static void do_nothing(struct gigaset_capi_ctr *iif,
 		       struct gigaset_capi_appl *ap,
 		       struct sk_buff *skb)
 {
-<<<<<<< HEAD
 	/* decode message */
 	capi_message2cmsg(&iif->acmsg, skb->data);
 	dump_cmsg(DEBUG_CMD, __func__, &iif->acmsg);
-=======
-	if (printk_timed_ratelimit(&ignored_msg_dump_time, 30 * 1000)) {
-		/* decode message */
-		capi_message2cmsg(&iif->acmsg, skb->data);
-		dump_cmsg(DEBUG_CMD, __func__, &iif->acmsg);
-	}
->>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 	dev_kfree_skb_any(skb);
 }
 

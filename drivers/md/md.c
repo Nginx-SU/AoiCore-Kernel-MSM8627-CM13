@@ -452,11 +452,7 @@ static void submit_flushes(struct work_struct *ws)
 			atomic_inc(&rdev->nr_pending);
 			atomic_inc(&rdev->nr_pending);
 			rcu_read_unlock();
-<<<<<<< HEAD
 			bi = bio_alloc_mddev(GFP_NOIO, 0, mddev);;
-=======
-			bi = bio_alloc_mddev(GFP_KERNEL, 0, mddev);
->>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 			bi->bi_end_io = md_end_flush;
 			bi->bi_private = rdev;
 			bi->bi_bdev = rdev->bdev;

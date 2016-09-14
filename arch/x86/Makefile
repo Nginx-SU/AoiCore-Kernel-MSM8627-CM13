@@ -206,10 +206,7 @@ archclean:
 	$(Q)rm -rf $(objtree)/arch/i386
 	$(Q)rm -rf $(objtree)/arch/x86_64
 	$(Q)$(MAKE) $(clean)=$(boot)
-<<<<<<< HEAD
 	$(Q)$(MAKE) $(clean)=arch/x86/tools
-=======
->>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 
 define archhelp
   echo  '* bzImage      - Compressed kernel image (arch/x86/boot/bzImage)'

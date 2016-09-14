@@ -476,11 +476,7 @@ static int __devinit isci_pci_probe(struct pci_dev *pdev, const struct pci_devic
 	if (!orom)
 		orom = isci_request_oprom(pdev);
 
-<<<<<<< HEAD
 	for (i = 0; orom && i < num_controllers(pdev); i++) {
-=======
-	for (i = 0; orom && i < ARRAY_SIZE(orom->ctrl); i++) {
->>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 		if (sci_oem_parameters_validate(&orom->ctrl[i],
 						orom->hdr.version)) {
 			dev_warn(&pdev->dev,

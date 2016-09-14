@@ -64,11 +64,7 @@
 		status = "disable";
 	};
 
-<<<<<<< HEAD
 	sdhci@78000600 {
-=======
-	sdhci@78000400 {
->>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 		support-8bit;
 	};
 };

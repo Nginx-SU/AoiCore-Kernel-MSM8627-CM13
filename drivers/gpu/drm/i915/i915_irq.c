@@ -424,22 +424,11 @@ static void gen6_pm_rps_work(struct work_struct *work)
 	mutex_unlock(&dev_priv->dev->struct_mutex);
 }
 
-<<<<<<< HEAD
 static void pch_irq_handler(struct drm_device *dev, u32 pch_iir)
 {
 	drm_i915_private_t *dev_priv = (drm_i915_private_t *) dev->dev_private;
 	int pipe;
 
-=======
-static void pch_irq_handler(struct drm_device *dev)
-{
-	drm_i915_private_t *dev_priv = (drm_i915_private_t *) dev->dev_private;
-	u32 pch_iir;
-	int pipe;
-
-	pch_iir = I915_READ(SDEIIR);
-
->>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 	if (pch_iir & SDE_AUDIO_POWER_MASK)
 		DRM_DEBUG_DRIVER("PCH audio power change on port %d\n",
 				 (pch_iir & SDE_AUDIO_POWER_MASK) >>
@@ -537,11 +526,7 @@ static irqreturn_t ivybridge_irq_handler(DRM_IRQ_ARGS)
 	if (de_iir & DE_PCH_EVENT_IVB) {
 		if (pch_iir & SDE_HOTPLUG_MASK_CPT)
 			queue_work(dev_priv->wq, &dev_priv->hotplug_work);
-<<<<<<< HEAD
 		pch_irq_handler(dev, pch_iir);
-=======
-		pch_irq_handler(dev);
->>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 	}
 
 	if (pm_iir & GEN6_PM_DEFERRED_EVENTS) {
@@ -641,11 +626,7 @@ static irqreturn_t ironlake_irq_handler(DRM_IRQ_ARGS)
 	if (de_iir & DE_PCH_EVENT) {
 		if (pch_iir & hotplug_mask)
 			queue_work(dev_priv->wq, &dev_priv->hotplug_work);
-<<<<<<< HEAD
 		pch_irq_handler(dev, pch_iir);
-=======
-		pch_irq_handler(dev);
->>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 	}
 
 	if (de_iir & DE_PCU_EVENT) {

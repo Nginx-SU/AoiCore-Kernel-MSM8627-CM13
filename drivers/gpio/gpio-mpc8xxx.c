@@ -163,12 +163,8 @@ static void mpc8xxx_gpio_irq_cascade(unsigned int irq, struct irq_desc *desc)
 	if (mask)
 		generic_handle_irq(irq_linear_revmap(mpc8xxx_gc->irq,
 						     32 - ffs(mask)));
-<<<<<<< HEAD
 	if (chip->irq_eoi)
  		chip->irq_eoi(&desc->irq_data);
-=======
-	chip->irq_eoi(&desc->irq_data);
->>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 }
 
 static void mpc8xxx_irq_unmask(struct irq_data *d)

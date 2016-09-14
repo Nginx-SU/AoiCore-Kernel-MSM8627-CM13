@@ -37,10 +37,7 @@
 #define TI_5152_BOOT_PRODUCT_ID		0x5152	/* no EEPROM, no firmware */
 #define TI_5052_EEPROM_PRODUCT_ID	0x505A	/* EEPROM, no firmware */
 #define TI_5052_FIRMWARE_PRODUCT_ID	0x505F	/* firmware is running */
-<<<<<<< HEAD
 #define FRI2_PRODUCT_ID			0x5053  /* Fish River Island II */
-=======
->>>>>>> b82fb1134ba7bd9b8dad539cf20938781f7afa36
 
 /* Multi-Tech vendor and product ids */
 #define MTS_VENDOR_ID			0x06E0
