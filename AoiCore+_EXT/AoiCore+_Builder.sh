@@ -21,7 +21,7 @@ zip -r Aoi_Core+_v1.5.5-nicki *
 rm -rfv META-INF
 rm -rfv system 
 rm -rfv tmp
-mv Aoi_Core+_v1.5.5-nicki /home/nicklas/Aoi_Core+_v1.5.6-nicki.zip
+mv Aoi_Core+_v1.5.5-nicki /home/nicklas/Aoi_Core+_v1.5.9-nicki.zip
 echo "###Cleaning..."
 cd /home/nicklas/AoiCore+_EXT
 rm -rfv work

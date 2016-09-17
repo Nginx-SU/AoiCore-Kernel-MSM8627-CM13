@@ -32,6 +32,10 @@ cp AoiCore+_EXT/arch/arm/include/asm/rwsem.h android/kernel/arch/arm/include/asm
 rm android/kernel/arch/arm/kernel/Makefile
 cp AoiCore+_EXT/arch/arm/kernel/Makefile android/kernel/arch/arm/kernel/Makefile
 cp AoiCore+_EXT/arch/arm/kernel/auto_hotplug.c android/kernel/arch/arm/kernel/auto_hotplug.c
+rm android/kernel/arch/arm/kernel/head-nommu.S
+cp AoiCore+_EXT/arch/arm/kernel/head-nommu.S android/kernel/arch/arm/kernel/head-nommu.S
+rm android/kernel/arch/arm/kernel/head.S
+cp AoiCore+_EXT/arch/arm/kernel/head.S android/kernel/arch/arm/kernel/head.S
 rm android/kernel/arch/arm/lib/Makefile 
 cp AoiCore+_EXT/arch/arm/lib/Makefile android/kernel/arch/arm/lib/Makefile
 cp AoiCore+_EXT/arch/arm/lib/xor-neon.c android/kernel/arch/arm/lib/xor-neon.c
@@ -62,6 +66,8 @@ cp AoiCore+_EXT/block/tripndroid-iosched.c android/kernel/block/tripndroid-iosch
 cp AoiCore+_EXT/block/zen-iosched.c android/kernel/block/zen-iosched.c
 rm android/kernel/drivers/cpufreq/Kconfig
 cp AoiCore+_EXT/drivers/cpufreq/Kconfig android/kernel/drivers/cpufreq/Kconfig
+rm android/kernel/drivers/cpufreq/cpufreq.c
+cp AoiCore+_EXT/drivers/cpufreq/cpufreq.c android/kernel/drivers/cpufreq/cpufreq.c
 rm android/kernel/drivers/cpufreq/Makefile
 cp AoiCore+_EXT/drivers/cpufreq/Makefile android/kernel/drivers/cpufreq/Makefile
 cp AoiCore+_EXT/drivers/cpufreq/cpufreq_HYPER.c android/kernel/drivers/cpufreq/cpufreq_HYPER.c
@@ -89,13 +95,14 @@ cp AoiCore+_EXT/include/linux/fastchg.h android/kernel/include/linux/fastchg.h
 cp AoiCore+_EXT/include/linux/quickwakeup.h android/kernel/include/linux/quickwakeup.h
 rm android/kernel/kernel/sched/features.h
 cp AoiCore+_EXT/kernel/sched/features.h android/kernel/kernel/sched/features.h
+rm android/kernel/kernel/power/Kconfig
+cp AoiCore+_EXT/kernel/power/Kconfig android/kernel/kernel/power/Kconfig
+rm android/kernel/kernel/power/Makefile
+cp AoiCore+_EXT/kernel/power/Makefile android/kernel/kernel/power/Makefile
+cp AoiCore+_EXT/kernel/power/quickwakeup.c android/kernel/kernel/power/quickwakeup.c
+rm android/kernel/mm/ksm.c
+cp AoiCore+_EXT/mm/ksm.c android/kernel/mm/ksm.c
 cd android/kernel
-rm android/kernel/power/Kconfig
-cp AoiCore+_EXT/kernel/power/Kconfig android/kernel/power/Kconfig
-rm android/kernel/power/Makefile
-cp AoiCore+_EXT/kernel/power/Makefile android/kernel/power/Makefile
-rm android/kernel/power/quickwakeup.c
-cp AoiCore+_EXT/kernel/power/quickwakeup.c android/kernel/power/quickwakeup.c
 echo "
 ###Running GCC Toolchains 5.3.0 (Crosstool-NG Toolchains)"
 
