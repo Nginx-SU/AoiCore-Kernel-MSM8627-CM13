@@ -185,17 +185,15 @@ static unsigned long ksm_pages_unshared;
 static unsigned long ksm_rmap_items;
 
 /* Number of pages ksmd should scan in one batch */
-<<<<<<< HEAD
 static unsigned int ksm_thread_pages_to_scan = 100;
 
 /* Milliseconds ksmd should sleep between batches */
 static unsigned int ksm_thread_sleep_millisecs = 500;
-=======
+
 static unsigned int ksm_thread_pages_to_scan = 20;
 
 /* Milliseconds ksmd should sleep between batches */
 static unsigned int ksm_thread_sleep_millisecs = 100;
->>>>>>> a1600cf55f41ee498e43975ba3d57d65cefb65f5
 
 /* Boolean to indicate whether to use deferred timer or not */
 static bool use_deferred_timer;
