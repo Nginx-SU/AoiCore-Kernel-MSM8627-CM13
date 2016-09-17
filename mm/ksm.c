@@ -189,14 +189,6 @@ static unsigned int ksm_thread_pages_to_scan = 100;
 
 /* Milliseconds ksmd should sleep between batches */
 static unsigned int ksm_thread_sleep_millisecs = 500;
-<<<<<<< HEAD
-=======
-
-static unsigned int ksm_thread_pages_to_scan = 20;
-
-/* Milliseconds ksmd should sleep between batches */
-static unsigned int ksm_thread_sleep_millisecs = 100;
->>>>>>> d78b9ce5247b8ae0a10dbef27dc72ad79bc0b04c
 
 /* Boolean to indicate whether to use deferred timer or not */
 static bool use_deferred_timer;
