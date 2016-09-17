@@ -2874,3 +2874,8 @@ scripts/kconfig/conf --silentoldconfig Kconfig
   LD [M]  drivers/spi/spidev.ko
   CC      drivers/staging/prima/wlan.mod.o
   LD [M]  drivers/staging/prima/wlan.ko
+scripts/Makefile.build:307: recipe for target 'drivers/media/rc/keymaps/rc-flyvideo.o' failed
+scripts/Makefile.build:443: recipe for target 'drivers/media/rc/keymaps' failed
+scripts/Makefile.build:443: recipe for target 'drivers/media/rc' failed
+scripts/Makefile.build:443: recipe for target 'drivers/media' failed
+Makefile:954: recipe for target 'drivers' failed
