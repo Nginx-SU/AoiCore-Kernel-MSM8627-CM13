@@ -720,6 +720,8 @@ static void nilfs_dispose_list(struct the_nilfs *nilfs,
 		spin_lock(&nilfs->ns_inode_lock);
 		list_for_each_entry_safe(ii, n, head, i_dirty) {
 			list_del_init(&ii->i_dirty);
+			truncate_inode_pages(&ii->vfs_inode.i_data, 0);
+ 		nilfs_btnode_cache_clear(&ii->i_btnode_cache);
 			if (force) {
 				if (unlikely(ii->i_bh)) {
 					brelse(ii->i_bh);
