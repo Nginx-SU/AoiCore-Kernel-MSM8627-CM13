@@ -544,6 +544,7 @@ int objio_write_pagelist(struct nfs_write_data *wdata, int how)
  		objio_free_result(&objios->oir);
 		return ret;
 	}
+
 	if (objios->sync)
 		_write_done(objios->ios, objios);
 

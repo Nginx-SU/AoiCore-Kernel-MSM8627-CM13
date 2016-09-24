@@ -5157,7 +5157,7 @@ out:
  *   2 - stop but do not disassemble array
  */
 static int do_md_stop(struct mddev * mddev, int mode,
- 		      struct block_device *bdev
+ 		      struct block_device *bdev)
 {
 	struct gendisk *disk = mddev->gendisk;
 	struct md_rdev *rdev;

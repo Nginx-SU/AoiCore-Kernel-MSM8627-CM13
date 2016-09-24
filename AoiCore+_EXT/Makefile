@@ -1,6 +1,6 @@
 VERSION = 3
 PATCHLEVEL = 4
-SUBLEVEL = 4
+SUBLEVEL = 7
 EXTRAVERSION =
 NAME = Saber-toothed Squirrel
 
@@ -193,7 +193,7 @@ SUBARCH := $(shell uname -m | sed -e s/i.86/i386/ -e s/sun4u/sparc64/ \
 # Note: Some architectures assign CROSS_COMPILE in their arch/*/Makefile
 export KBUILD_BUILDHOST := $(SUBARCH)
 ARCH		= arm
-CROSS_COMPILE	= /home/nicklas/crosstool-toolchains/bin/arm-unknown-linux-gnueabihf-
+CROSS_COMPILE	= /home/nicklas/crosstool-toolchains-5.4.X/bin/arm-unknown-linux-gnueabihf-
 # Architecture as present in compile.h
 UTS_MACHINE 	:= $(ARCH)
 SRCARCH 	:= $(ARCH)
@@ -244,8 +244,14 @@ CONFIG_SHELL := $(shell if [ -x "$$BASH" ]; then echo $$BASH; \
 
 HOSTCC       = gcc
 HOSTCXX      = g++
-HOSTCFLAGS   = -Wall -Wmissing-prototypes -Wstrict-prototypes -O3 -fomit-frame-pointer -fgcse-las -std=gnu89
-HOSTCXXFLAGS = -O3 -fgcse-las
+HOSTCFLAGS   = -Wall -Wmissing-prototypes -Wstrict-prototypes -O3 -fomit-frame-pointer -fgcse-las -pipe -DNDEBUG -std=gnu89
+HOSTCXXFLAGS = -pipe -DNDEBUG -O3 -fgcse-las
+
+ifdef CONFIG_CC_GRAPHITE_OPTIMIZATION
+# More Graphite
+HOSTCXXFLAGS += -fgraphite -floop-flatten -floop-parallelize-all -ftree-loop-linear -floop-interchange -floop-strip-mine -floop-block
+HOSTCFLAGS   += -fgraphite -floop-flatten -floop-parallelize-all -ftree-loop-linear -floop-interchange -floop-strip-mine -floop-block
+endif
 
 # Decide whether to build built-in, modular, or both.
 # Normally, just do built-in.
@@ -347,12 +353,15 @@ CHECK		= sparse
 
 CHECKFLAGS     := -D__linux__ -Dlinux -D__STDC__ -Dunix -D__unix__ \
 		  -Wbitwise -Wno-return-void $(CF)
-CFLAGS_MODULE   =
-AFLAGS_MODULE   =
-LDFLAGS_MODULE  =
-CFLAGS_KERNEL   = -mcpu=cortex-a7 -mfpu=neon-vfpv4 -ftree-vectorize -funsafe-math-optimizations
-AFLAGS_KERNEL   = -mcpu=cortex-a7 -mfpu=neon-vfpv4 -ftree-vectorize -funsafe-math-optimizations
-CFLAGS_GCOV	= -fprofile-arcs -ftest-coverage
+
+KERNELFLAGS  = -Ofast -DNDEBUG -munaligned-access -fgcse-lm -fgcse-sm -fsingle-precision-constant -fforce-addr -fsched-spec-load -mtune=cortex-a7 -marm -mfpu=neon-vfpv4 -ftree-vectorize -fpredictive-commoning -ffast-math -floop-nest-optimize $(GRAPHITE_FLAGS)
+MODFLAGS        = -DMODULE $(KERNELFLAGS)
+CFLAGS_MODULE   = $(MODFLAGS) -fno-pic
+AFLAGS_MODULE   = $(MODFLAGS)
+LDFLAGS_MODULE  = -T $(srctree)/scripts/module-common.lds
+CFLAGS_KERNEL   = $(KERNELFLAGS)
+AFLAGS_KERNEL   = $(KERNELFLAGS)
+CFLAGS_GCOV     = -fprofile-arcs -ftest-coverage
 
 
 # Use LINUXINCLUDE when you must reference the include/ directory.
@@ -364,19 +373,27 @@ LINUXINCLUDE    := -I$(srctree)/arch/$(hdr-arch)/include \
 
 KBUILD_CPPFLAGS := -D__KERNEL__
 
-KBUILD_CFLAGS   := -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -Wno-sizeof-pointer-memaccess -Wno-maybe-uninitialized -Wno-array-bounds -Wno-discarded-array-qualifiers -Wno-logical-not-parentheses \
-		   -fno-strict-aliasing -fno-common \
-		   -Werror-implicit-function-declaration \
-		   -Wno-format-security \
-		   -fno-delete-null-pointer-checks \
+KBUILD_CFLAGS   := -Wall -DNDEBUG -Wundef -Wstrict-prototypes -Wno-trigraphs -Wno-sizeof-pointer-memaccess -Wno-discarded-array-qualifiers -Wno-maybe-uninitialized -Wno-logical-not-parentheses -Wno-array-bounds \
+                   -fno-strict-aliasing -fno-common \
+                   -Werror-implicit-function-declaration \
+                   -Wno-format-security \
+		   -Wno-unused-but-set-variable \
+                   -fno-delete-null-pointer-checks \
+ 		   -fpredictive-commoning -fgcse-after-reload \
 		   -ftree-vectorize \
-		   -std=gnu89 \
-		   
-KBUILD_AFLAGS_KERNEL :=
-KBUILD_CFLAGS_KERNEL :=
+                   -fmodulo-sched -fmodulo-sched-allow-regmoves \
+		   -mtune=cortex-a7 -mfpu=neon-vfpv4 \
+		   -std=gnu89
+
+ifdef CONFIG_CC_GRAPHITE_OPTIMIZATION
+KBUILD_CFLAGS   += -fgraphite -floop-flatten -floop-parallelize-all -ftree-loop-linear -floop-interchange -floop-strip-mine -floop-block
+endif
+
+KBUILD_AFLAGS_KERNEL := 
+KBUILD_CFLAGS_KERNEL := 
 KBUILD_AFLAGS   := -D__ASSEMBLY__
 KBUILD_AFLAGS_MODULE  := -DMODULE
-KBUILD_CFLAGS_MODULE  := -DMODULE
+KBUILD_CFLAGS_MODULE  := -DMODULE 
 KBUILD_LDFLAGS_MODULE := -T $(srctree)/scripts/module-common.lds
 
 # Read KERNELRELEASE from include/config/kernel.release (if it exists)
@@ -564,9 +581,7 @@ all: vmlinux
 ifdef CONFIG_CC_OPTIMIZE_FOR_SIZE
 KBUILD_CFLAGS	+= -Os $(call cc-disable-warning,maybe-uninitialized,)
 else
-KBUILD_CFLAGS	+= -O3
-KBUILD_CFLAGS   += $(call cc-disable-warning,maybe-uninitialized) -fno-inline-functions
-KBUILD_CFLAGS   += $(call cc-disable-warning,array-bounds)
+KBUILD_CFLAGS	+= -Ofast -fmodulo-sched -fmodulo-sched-allow-regmoves -fno-tree-vectorize -fno-inline-functions
 endif
 
 # conserve stack if available

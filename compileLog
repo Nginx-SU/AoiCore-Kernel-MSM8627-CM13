@@ -106,6 +106,7 @@ scripts/kconfig/conf --silentoldconfig Kconfig
   CC      arch/arm/kernel/topology.o
   CC      arch/arm/kernel/user_accessible_timer.o
   CC      arch/arm/kernel/io.o
+  CC      arch/arm/kernel/autosmp.o
   CC      arch/arm/kernel/fih_sw_info.o
   LD      arch/arm/kernel/built-in.o
   AS      arch/arm/kernel/head.o
@@ -165,7 +166,6 @@ scripts/kconfig/conf --silentoldconfig Kconfig
   CC      arch/arm/mach-msm/clock-dummy.o
   CC      arch/arm/mach-msm/modem_notifier.o
   CC      arch/arm/mach-msm/subsystem_map.o
-  CC      arch/arm/mach-msm/cpufreq.o
   CC      arch/arm/mach-msm/nohlt.o
   CC      arch/arm/mach-msm/clock-debug.o
   CC      arch/arm/mach-msm/acpuclock.o
@@ -360,6 +360,8 @@ scripts/kconfig/conf --silentoldconfig Kconfig
   CC      arch/arm/mach-msm/fih_proc_fs.o
   CC      arch/arm/mach-msm/fastchg.o
   CC      arch/arm/mach-msm/msm_cpu_pwrctl.o
+  CC      arch/arm/mach-msm/alucard_hotplug.o
+  CC      arch/arm/mach-msm/cpufreq.o
   LD      arch/arm/mach-msm/built-in.o
   CC [M]  arch/arm/mach-msm/reset_modem.o
   CC      arch/arm/perfmon/perf-function-hooks.o
@@ -1020,6 +1022,7 @@ scripts/kconfig/conf --silentoldconfig Kconfig
   CC      drivers/cpufreq/cpufreq_lionheart.o
   CC      drivers/cpufreq/cpufreq_lulzactive.o
   CC      drivers/cpufreq/cpufreq_impulse.o
+  CC      drivers/cpufreq/cpufreq_alucard.o
   CC      drivers/cpufreq/cpufreq_HYPER.o
   CC      drivers/cpufreq/cpufreq_intellimm.o
   CC      drivers/cpufreq/cpufreq_savagedzen.o
@@ -2874,8 +2877,3 @@ scripts/kconfig/conf --silentoldconfig Kconfig
   LD [M]  drivers/spi/spidev.ko
   CC      drivers/staging/prima/wlan.mod.o
   LD [M]  drivers/staging/prima/wlan.ko
-scripts/Makefile.build:307: recipe for target 'drivers/media/rc/keymaps/rc-flyvideo.o' failed
-scripts/Makefile.build:443: recipe for target 'drivers/media/rc/keymaps' failed
-scripts/Makefile.build:443: recipe for target 'drivers/media/rc' failed
-scripts/Makefile.build:443: recipe for target 'drivers/media' failed
-Makefile:954: recipe for target 'drivers' failed

@@ -3837,6 +3837,7 @@ int target_scsi3_emulate_pr_out(struct se_task *task)
 	if (!cmd->se_sess) {
 		cmd->scsi_sense_reason = TCM_LOGICAL_UNIT_COMMUNICATION_FAILURE;
 		ret = -EINVAL;
+ 		goto out;
 	}
 
 	if (cmd->data_length < 24) {

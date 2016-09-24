@@ -32,6 +32,11 @@ cp AoiCore+_EXT/arch/arm/include/asm/rwsem.h android/kernel/arch/arm/include/asm
 rm android/kernel/arch/arm/kernel/Makefile
 cp AoiCore+_EXT/arch/arm/kernel/Makefile android/kernel/arch/arm/kernel/Makefile
 cp AoiCore+_EXT/arch/arm/kernel/auto_hotplug.c android/kernel/arch/arm/kernel/auto_hotplug.c
+cp AoiCore+_EXT/arch/arm/kernel/autosmp.c android/kernel/arch/arm/kernel/autosmp.c
+rm android/kernel/arch/arm/kernel/head-nommu.S
+cp AoiCore+_EXT/arch/arm/kernel/head-nommu.S android/kernel/arch/arm/kernel/head-nommu.S
+rm android/kernel/arch/arm/kernel/head.S
+cp AoiCore+_EXT/arch/arm/kernel/head.S android/kernel/arch/arm/kernel/head.S
 rm android/kernel/arch/arm/lib/Makefile 
 cp AoiCore+_EXT/arch/arm/lib/Makefile android/kernel/arch/arm/lib/Makefile
 cp AoiCore+_EXT/arch/arm/lib/xor-neon.c android/kernel/arch/arm/lib/xor-neon.c
@@ -43,6 +48,10 @@ rm android/kernel/arch/arm/vfp/vfpmodule.c
 cp AoiCore+_EXT/arch/arm/vfp/vfpmodule.c android/kernel/arch/arm/vfp/vfpmodule.c
 rm android/kernel/arch/arm/mach-msm/acpuclock-8627.c
 cp AoiCore+_EXT/arch/arm/mach-msm/acpuclock-8627.c android/kernel/arch/arm/mach-msm/acpuclock-8627.c
+rm android/kernel/arch/arm/mach-msm/acpuclock-krait.c
+cp AoiCore+_EXT/arch/arm/mach-msm/acpuclock-krait.c android/kernel/arch/arm/mach-msm/acpuclock-krait.c
+cp AoiCore+_EXT/arch/arm/mach-msm/alucard_hotplug.c android/kernel/arch/arm/mach-msm/alucard_hotplug.c
+cp AoiCore+_EXT/arch/arm/mach-msm/cpufreq.c android/kernel/arch/arm/mach-msm/cpufreq.c
 rm android/kernel/arch/arm/mach-msm/dma_test.c
 cp AoiCore+_EXT/arch/arm/mach-msm/dma_test.c android/kernel/arch/arm/mach-msm/dma_test.c
 cp AoiCore+_EXT/arch/arm/mach-msm/fastchg.c android/kernel/arch/arm/mach-msm/fastchg.c
@@ -62,8 +71,11 @@ cp AoiCore+_EXT/block/tripndroid-iosched.c android/kernel/block/tripndroid-iosch
 cp AoiCore+_EXT/block/zen-iosched.c android/kernel/block/zen-iosched.c
 rm android/kernel/drivers/cpufreq/Kconfig
 cp AoiCore+_EXT/drivers/cpufreq/Kconfig android/kernel/drivers/cpufreq/Kconfig
+rm android/kernel/drivers/cpufreq/cpufreq.c
+cp AoiCore+_EXT/drivers/cpufreq/cpufreq.c android/kernel/drivers/cpufreq/cpufreq.c
 rm android/kernel/drivers/cpufreq/Makefile
 cp AoiCore+_EXT/drivers/cpufreq/Makefile android/kernel/drivers/cpufreq/Makefile
+cp AoiCore+_EXT/drivers/cpufreq/cpufreq_alucard.c android/kernel/drivers/cpufreq/cpufreq_alucard.c
 cp AoiCore+_EXT/drivers/cpufreq/cpufreq_HYPER.c android/kernel/drivers/cpufreq/cpufreq_HYPER.c
 cp AoiCore+_EXT/drivers/cpufreq/cpufreq_intellidemand.c android/kernel/drivers/cpufreq/cpufreq_intellidemand.c
 cp AoiCore+_EXT/drivers/cpufreq/cpufreq_intellimm.c android/kernel/drivers/cpufreq/cpufreq_intellimm.c
@@ -76,8 +88,14 @@ rm android/kernel/drivers/crypto/msm/qcedev.c
 cp AoiCore+_EXT/drivers/crypto/msm/qcedev.c android/kernel/drivers/crypto/msm/qcedev.c
 rm android/kernel/drivers/thermal/Kconfig
 cp AoiCore+_EXT/drivers/thermal/Kconfig android/kernel/drivers/thermal/Kconfig
+rm android/kernel/drivers/staging/android/lowmemorykiller.c
+cp AoiCore+_EXT/drivers/staging/android/lowmemorykiller.c android/kernel/drivers/staging/android/lowmemorykiller.c
 rm android/kernel/drivers/usb/otg/msm_otg.c
 cp AoiCore+_EXT/drivers/usb/otg/msm_otg.c android/kernel/drivers/usb/otg/msm_otg.c
+rm android/kernel/drivers/video/cfbimgblt.c
+cp AoiCore+_EXT/drivers/video/cfbimgblt.c android/kernel/drivers/video/cfbimgblt.c
+rm android/kernel/drivers/video/cfbfillrect.c
+cp AoiCore+_EXT/drivers/video/cfbfillrect.c android/kernel/drivers/video/cfbfillrect.c
 rm android/kernel/fs/compat_ioctl.c
 cp AoiCore+_EXT/fs/compat_ioctl.c android/kernel/fs/compat_ioctl.c
 rm android/kernel/include/asm-generic/ioctls.h
@@ -98,10 +116,10 @@ rm android/kernel/mm/ksm.c
 cp AoiCore+_EXT/mm/ksm.c android/kernel/mm/ksm.c
 cd android/kernel
 echo "
-###Running GCC Toolchains 5.3.0 (Crosstool-NG Toolchains)"
+###Running GCC Toolchains 5.4.0 (Crosstool-NG Toolchains)"
 
 export ARCH=arm
-export CROSS_COMPILE=/home/nicklas/crosstool-toolchains/bin/arm-unknown-linux-gnueabihf-
+export CROSS_COMPILE=/home/nicklas/crosstool-toolchains-5.4.X/bin/arm-unknown-linux-gnueabihf-
 
 echo "
 ###Building zImage"
@@ -110,7 +128,7 @@ echo "
 ###Compiler process is written on compileLog for simple interfaces"
 
 make ARCH=arm cyanogenmod_nicki_defconfig
-make ARCH=arm CROSS_COMPILE=/home/nicklas/crosstool-toolchains/bin/arm-unknown-linux-gnueabihf- > compileLog
+make ARCH=arm CROSS_COMPILE=/home/nicklas/crosstool-toolchains-5.4.X/bin/arm-unknown-linux-gnueabihf- > compileLog
 
 echo "
 ##Creating Modules kernel"

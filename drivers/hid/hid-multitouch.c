@@ -792,7 +792,7 @@ static const struct hid_device_id mt_devices[] = {
 	{ .driver_data = MT_CLS_SERIAL,
 		HID_USB_DEVICE(USB_VENDOR_ID_ATMEL,
 			USB_DEVICE_ID_ATMEL_MXT_DIGITIZER) },
-
+	
 	/* Baanto multitouch devices */
  	{ .driver_data = MT_CLS_DEFAULT,
  		HID_USB_DEVICE(USB_VENDOR_ID_BAANTO,

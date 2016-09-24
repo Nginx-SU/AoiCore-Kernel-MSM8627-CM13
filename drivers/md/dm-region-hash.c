@@ -403,7 +403,7 @@ void dm_rh_mark_nosync(struct dm_region_hash *rh, struct bio *bio)
 		rh->flush_failure = 1;
 		return;
 	}
-	
+
 	if (bio->bi_rw & REQ_DISCARD)
  		return;
 

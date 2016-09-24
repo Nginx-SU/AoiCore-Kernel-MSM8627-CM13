@@ -476,7 +476,7 @@ static int _read_4_write_first_stripe(struct ore_io_state *ios)
 
 	ORE_DBGMSG("stripe_start=0x%llx ios->offset=0x%llx min_p=%d max_p=%d\n",
  		   offset, ios->offset, min_p, max_p);
- 
+
 	for (c = 0; ; c++) {
 		ore_calc_stripe_info(ios->layout, offset, 0, &read_si);
 		read_si.obj_offset += min_p * PAGE_SIZE;
@@ -522,7 +522,7 @@ static int _read_4_write_last_stripe(struct ore_io_state *ios)
  	u64 last_stripe_end;
  	unsigned bytes_in_stripe = ios->si.bytes_in_stripe;
  	unsigned c, p, min_p = sp2d->pages_in_unit, max_p = -1;
- 
+
 	offset = ios->offset + ios->length;
 	if (offset % PAGE_SIZE)
 		_add_to_r4w_last_page(ios, &offset);
@@ -650,6 +650,7 @@ int _ore_add_parity_unit(struct ore_io_state *ios,
 			 */
 			_read_4_write_first_stripe(ios);
 		}
+
 		if (!cur_len) /* If last stripe r4w pages of last stripe */
  			_read_4_write_last_stripe(ios);
  		_read_4_write_execute(ios);
