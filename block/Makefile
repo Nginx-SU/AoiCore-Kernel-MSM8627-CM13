@@ -24,6 +24,7 @@ obj-$(CONFIG_IOSCHED_FIFO)	+= fifo-iosched.o
 obj-$(CONFIG_IOSCHED_TRIPNDROID) += tripndroid-iosched.o
 obj-y += fiops-iosched.o
 obj-y += zen-iosched.o
+obj-y += vr-iosched.o
 
 obj-$(CONFIG_BLOCK_COMPAT)	+= compat_ioctl.o
 obj-$(CONFIG_BLK_DEV_INTEGRITY)	+= blk-integrity.o
