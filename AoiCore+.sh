@@ -59,6 +59,8 @@ rm android/kernel/arch/arm/mach-msm/Kconfig
 cp AoiCore+_EXT/arch/arm/mach-msm/Kconfig android/kernel/arch/arm/mach-msm/Kconfig
 rm android/kernel/arch/arm/mach-msm/Makefile
 cp AoiCore+_EXT/arch/arm/mach-msm/Makefile android/kernel/arch/arm/mach-msm/Makefile
+rm android/kernel/arch/arm/mach-msm/include/mach/kgsl.h
+cp AoiCore+_EXT/arch/arm/mach-msm/include/mach/kgsl.h android/kernel/arch/arm/mach-msm/include/mach/kgsl.h
 rm android/kernel/block/Kconfig.iosched
 cp AoiCore+_EXT/block/Kconfig.iosched android/kernel/block/Kconfig.iosched
 rm android/kernel/block/Makefile
@@ -68,6 +70,7 @@ cp AoiCore+_EXT/block/fiops-iosched.c android/kernel/block/fiops-iosched.c
 cp AoiCore+_EXT/block/sio-iosched.c android/kernel/block/sio-iosched.c
 cp AoiCore+_EXT/block/sioplus-iosched.c android/kernel/block/sioplus-iosched.c
 cp AoiCore+_EXT/block/tripndroid-iosched.c android/kernel/block/tripndroid-iosched.c
+cp AoiCore+_EXT/block/vr-iosched.c android/kernel/block/vr-iosched.c
 cp AoiCore+_EXT/block/zen-iosched.c android/kernel/block/zen-iosched.c
 rm android/kernel/drivers/cpufreq/Kconfig
 cp AoiCore+_EXT/drivers/cpufreq/Kconfig android/kernel/drivers/cpufreq/Kconfig
@@ -75,17 +78,25 @@ rm android/kernel/drivers/cpufreq/cpufreq.c
 cp AoiCore+_EXT/drivers/cpufreq/cpufreq.c android/kernel/drivers/cpufreq/cpufreq.c
 rm android/kernel/drivers/cpufreq/Makefile
 cp AoiCore+_EXT/drivers/cpufreq/Makefile android/kernel/drivers/cpufreq/Makefile
+cp AoiCore+_EXT/drivers/cpufreq/cpufreq_adaptive.c android/kernel/drivers/cpufreq/cpufreq_adaptive.c
 cp AoiCore+_EXT/drivers/cpufreq/cpufreq_alucard.c android/kernel/drivers/cpufreq/cpufreq_alucard.c
 cp AoiCore+_EXT/drivers/cpufreq/cpufreq_HYPER.c android/kernel/drivers/cpufreq/cpufreq_HYPER.c
+cp AoiCore+_EXT/drivers/cpufreq/cpufreq_elementalx.c android/kernel/drivers/cpufreq/cpufreq_elementalx.c
 cp AoiCore+_EXT/drivers/cpufreq/cpufreq_intellidemand.c android/kernel/drivers/cpufreq/cpufreq_intellidemand.c
-cp AoiCore+_EXT/drivers/cpufreq/cpufreq_intellimm.c android/kernel/drivers/cpufreq/cpufreq_intellimm.c
 cp AoiCore+_EXT/drivers/cpufreq/cpufreq_impulse.c android/kernel/drivers/cpufreq/cpufreq_impulse.c
 cp AoiCore+_EXT/drivers/cpufreq/cpufreq_lionheart.c android/kernel/drivers/cpufreq/cpufreq_lionheart.c
 cp AoiCore+_EXT/drivers/cpufreq/cpufreq_lulzactive.c android/kernel/drivers/cpufreq/cpufreq_lulzactive.c
+cp AoiCore+_EXT/drivers/cpufreq/cpufreq_pmc.c android/kernel/drivers/cpufreq/cpufreq_pmc.c
 cp AoiCore+_EXT/drivers/cpufreq/cpufreq_smartass2.c android/kernel/drivers/cpufreq/cpufreq_smartass2.c
 cp AoiCore+_EXT/drivers/cpufreq/cpufreq_savagedzen.c android/kernel/drivers/cpufreq/cpufreq_savagedzen.c
 rm android/kernel/drivers/crypto/msm/qcedev.c
 cp AoiCore+_EXT/drivers/crypto/msm/qcedev.c android/kernel/drivers/crypto/msm/qcedev.c
+rm android/kernel/drivers/gpu/msm/Kconfig
+cp AoiCore+_EXT/drivers/gpu/msm/Kconfig android/kernel/drivers/gpu/msm/Kconfig
+rm android/kernel/drivers/gpu/msm/kgsl_pwrctrl.c
+cp AoiCore+_EXT/drivers/gpu/msm/kgsl_pwrctrl.c android/kernel/drivers/gpu/msm/kgsl_pwrctrl.c
+rm android/kernel/drivers/gpu/msm/kgsl_pwrscale_trustzone.c
+cp AoiCore+_EXT/drivers/gpu/msm/kgsl_pwrscale_trustzone.c android/kernel/drivers/gpu/msm/kgsl_pwrscale_trustzone.c
 rm android/kernel/drivers/thermal/Kconfig
 cp AoiCore+_EXT/drivers/thermal/Kconfig android/kernel/drivers/thermal/Kconfig
 rm android/kernel/drivers/staging/android/lowmemorykiller.c
@@ -105,6 +116,8 @@ rm android/kernel/include/linux/cpufreq.h
 cp AoiCore+_EXT/include/linux/cpufreq.h android/kernel/include/linux/cpufreq.h
 cp AoiCore+_EXT/include/linux/fastchg.h android/kernel/include/linux/fastchg.h
 cp AoiCore+_EXT/include/linux/quickwakeup.h android/kernel/include/linux/quickwakeup.h
+rm android/kernel/include/trace/events/cpufreq_interactive.h
+cp AoiCore+_EXT/include/trace/events/cpufreq_interactive.h android/kernel/include/trace/events/cpufreq_interactive.h
 rm android/kernel/kernel/sched/features.h
 cp AoiCore+_EXT/kernel/sched/features.h android/kernel/kernel/sched/features.h
 rm android/kernel/kernel/power/Kconfig
@@ -122,10 +135,10 @@ export ARCH=arm
 export CROSS_COMPILE=/home/nicklas/crosstool-toolchains-5.4.X/bin/arm-unknown-linux-gnueabihf-
 
 echo "
-###Building zImage"
+###Building Kernel"
 
 echo "
-###Compiler process is written on compileLog for simple interfaces"
+###Compile kernel process will write on log, for simple interface"
 
 make ARCH=arm cyanogenmod_nicki_defconfig
 make ARCH=arm CROSS_COMPILE=/home/nicklas/crosstool-toolchains-5.4.X/bin/arm-unknown-linux-gnueabihf- > compileLog
@@ -154,3 +167,4 @@ cd /home/nicklas/AoiCore+_EXT
 
 echo "Script Complete Successfuly"
 echo "Nicklas Van Dam @ XDA"
+echo "AoiCore+ Kernel ready to flash :D"

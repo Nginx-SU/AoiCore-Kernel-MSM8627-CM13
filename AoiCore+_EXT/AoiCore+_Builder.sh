@@ -7,7 +7,6 @@ mkdir work
 cp Aoi_Core+.zip work
 cd work
 unzip Aoi_Core+.zip
-rm tmp/kernel/boot.img-zImage
 cd /home/nicklas/AoiCore+_output
 mv zImage /home/nicklas/AoiCore+_EXT/work/tmp/kernel/boot.img-zImage
 cd /home/nicklas/AoiCore+_EXT/work/system/lib
@@ -21,7 +20,7 @@ zip -r Aoi_Core+_v1.5.5-nicki *
 rm -rfv META-INF
 rm -rfv system 
 rm -rfv tmp
-mv Aoi_Core+_v1.5.5-nicki /home/nicklas/Aoi_Core+_v1.6.2-nicki.zip
+mv Aoi_Core+_v1.5.5-nicki /home/nicklas/Aoi_Core+_v1.6.3-nicki.zip
 echo "###Cleaning..."
 cd /home/nicklas/AoiCore+_EXT
 rm -rfv work
