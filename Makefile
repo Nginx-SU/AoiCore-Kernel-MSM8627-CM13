@@ -1,6 +1,6 @@
 VERSION = 3
 PATCHLEVEL = 4
-SUBLEVEL = 7
+SUBLEVEL = 8
 EXTRAVERSION =
 NAME = Saber-toothed Squirrel
 
@@ -377,7 +377,7 @@ KBUILD_CFLAGS   := -Wall -DNDEBUG -Wundef -Wstrict-prototypes -Wno-trigraphs -Wn
                    -fno-strict-aliasing -fno-common \
                    -Werror-implicit-function-declaration \
                    -Wno-format-security \
-		   -Wno-unused-but-set-variable \
+		   -Wno-unused-variable \
                    -fno-delete-null-pointer-checks \
  		   -fpredictive-commoning -fgcse-after-reload \
 		   -ftree-vectorize \
@@ -462,7 +462,7 @@ asm-generic:
 
 no-dot-config-targets := clean mrproper distclean \
 			 cscope gtags TAGS tags help %docs check% coccicheck \
-			 include/linux/version.h headers_% archheaders archscripts \
+			 include/linux/version.h headers_% \
 			 kernelversion %src-pkg
 
 config-targets := 0
@@ -583,10 +583,6 @@ KBUILD_CFLAGS	+= -Os $(call cc-disable-warning,maybe-uninitialized,)
 else
 KBUILD_CFLAGS	+= -Ofast -fmodulo-sched -fmodulo-sched-allow-regmoves -fno-tree-vectorize -fno-inline-functions
 endif
-
-# conserve stack if available
-# do this early so that an architecture can override it.
-KBUILD_CFLAGS   += $(call cc-option,-fconserve-stack)
 
 include $(srctree)/arch/$(SRCARCH)/Makefile
 
@@ -1002,7 +998,7 @@ prepare1: prepare2 include/linux/version.h include/generated/utsrelease.h \
                    include/config/auto.conf
 	$(cmd_crmodverdir)
 
-archprepare: archheaders archscripts prepare1 scripts_basic
+archprepare: prepare1 scripts_basic
 
 prepare0: archprepare FORCE
 	$(Q)$(MAKE) $(build)=.
@@ -1069,14 +1065,8 @@ hdr-inst := -rR -f $(srctree)/scripts/Makefile.headersinst obj
 # If we do an all arch process set dst to asm-$(hdr-arch)
 hdr-dst = $(if $(KBUILD_HEADERS), dst=include/asm-$(hdr-arch), dst=include/asm)
 
-PHONY += archheaders
-archheaders:
-
-PHONY += archscripts
-archscripts:
-
 PHONY += __headers
-__headers: include/linux/version.h scripts_basic asm-generic archheaders archscripts FORCE
+__headers: include/linux/version.h scripts_basic asm-generic FORCE
 	$(Q)$(MAKE) $(build)=scripts build_unifdef
 
 PHONY += headers_install_all
