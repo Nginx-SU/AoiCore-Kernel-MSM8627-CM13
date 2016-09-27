@@ -2096,7 +2096,7 @@ nfsd4_encode_fattr(struct svc_fh *fhp, struct svc_export *exp,
 	} else {
 		if ((buflen -= 8) < 0)
 			goto out_resource;
-		WRITE32(1);
+		WRITE32(0);
 		WRITE32(bmval0);
 	}
 	attrlenp = p++;                /* to be backfilled later */
