@@ -86,17 +86,11 @@ cp AoiCore+_EXT/drivers/cpufreq/cpufreq_intellidemand.c android/kernel/drivers/c
 cp AoiCore+_EXT/drivers/cpufreq/cpufreq_impulse.c android/kernel/drivers/cpufreq/cpufreq_impulse.c
 cp AoiCore+_EXT/drivers/cpufreq/cpufreq_lionheart.c android/kernel/drivers/cpufreq/cpufreq_lionheart.c
 cp AoiCore+_EXT/drivers/cpufreq/cpufreq_lulzactive.c android/kernel/drivers/cpufreq/cpufreq_lulzactive.c
-cp AoiCore+_EXT/drivers/cpufreq/cpufreq_pmc.c android/kernel/drivers/cpufreq/cpufreq_pmc.c
 cp AoiCore+_EXT/drivers/cpufreq/cpufreq_smartass2.c android/kernel/drivers/cpufreq/cpufreq_smartass2.c
 cp AoiCore+_EXT/drivers/cpufreq/cpufreq_savagedzen.c android/kernel/drivers/cpufreq/cpufreq_savagedzen.c
 rm android/kernel/drivers/crypto/msm/qcedev.c
 cp AoiCore+_EXT/drivers/crypto/msm/qcedev.c android/kernel/drivers/crypto/msm/qcedev.c
-rm android/kernel/drivers/gpu/msm/Kconfig
-cp AoiCore+_EXT/drivers/gpu/msm/Kconfig android/kernel/drivers/gpu/msm/Kconfig
-rm android/kernel/drivers/gpu/msm/kgsl_pwrctrl.c
 cp AoiCore+_EXT/drivers/gpu/msm/kgsl_pwrctrl.c android/kernel/drivers/gpu/msm/kgsl_pwrctrl.c
-rm android/kernel/drivers/gpu/msm/kgsl_pwrscale_trustzone.c
-cp AoiCore+_EXT/drivers/gpu/msm/kgsl_pwrscale_trustzone.c android/kernel/drivers/gpu/msm/kgsl_pwrscale_trustzone.c
 rm android/kernel/drivers/thermal/Kconfig
 cp AoiCore+_EXT/drivers/thermal/Kconfig android/kernel/drivers/thermal/Kconfig
 rm android/kernel/drivers/staging/android/lowmemorykiller.c
@@ -118,6 +112,8 @@ cp AoiCore+_EXT/include/linux/fastchg.h android/kernel/include/linux/fastchg.h
 cp AoiCore+_EXT/include/linux/quickwakeup.h android/kernel/include/linux/quickwakeup.h
 rm android/kernel/include/trace/events/cpufreq_interactive.h
 cp AoiCore+_EXT/include/trace/events/cpufreq_interactive.h android/kernel/include/trace/events/cpufreq_interactive.h
+rm android/kernel/init/Kconfig
+cp AoiCore+_EXT/init/Kconfig android/kernel/init/Kconfig
 rm android/kernel/kernel/sched/features.h
 cp AoiCore+_EXT/kernel/sched/features.h android/kernel/kernel/sched/features.h
 rm android/kernel/kernel/power/Kconfig
